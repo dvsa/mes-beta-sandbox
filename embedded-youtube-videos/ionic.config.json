@@ -1,0 +1,7 @@
+{
+  "name": "embedded-youtube-videos",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
