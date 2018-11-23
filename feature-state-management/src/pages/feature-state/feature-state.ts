@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the FeatureStatePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FeatureStatePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  loggedIn$: Observable<string>;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FeatureStatePage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, private store: Store<{ appState: any }>) {
+    this.loggedIn$ = store.select(state => state.appState.loggedIn);
   }
 
 }
