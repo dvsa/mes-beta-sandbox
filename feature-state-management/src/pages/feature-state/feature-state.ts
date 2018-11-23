@@ -11,9 +11,11 @@ import { Observable } from 'rxjs/Observable';
 export class FeatureStatePage {
 
   loggedIn$: Observable<string>;
+  count$: Observable<number>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private store: Store<{ appState: any }>) {
     this.loggedIn$ = store.select(state => state.appState.loggedIn);
+    this.count$ = store.select(state => state.count);
   }
 
 }

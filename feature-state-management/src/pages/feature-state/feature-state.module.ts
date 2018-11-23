@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { FeatureStatePage } from './feature-state';
 import { ComponentsModule } from '../../components/components.module';
+import { featureReducer } from './feature-state.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -11,6 +13,7 @@ import { ComponentsModule } from '../../components/components.module';
   ],
   imports: [
     IonicPageModule.forChild(FeatureStatePage),
+    StoreModule.forFeature('count', featureReducer),
     ComponentsModule
   ],
 })
