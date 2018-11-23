@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Simple action button where we can record driving, serious and dangerous faults</h2>
+
+  <div>
+    <button (click)="pickDrivingFaultType()">Driving fault</button>
+    <button (click)="pickSeriousFaultType()">Serious fault</button>
+    <button (click)="pickDangerousFaultType()">Dangerous fault</button>
+  </div>
+
+  <div>
+    Selected fault type: <span>{{ pickedFaultType }}</span>
+  </div>
+
+  <div>
+    <h3>Judgement</h3>
+
+    <div>
+      <button (click)="addFault()">Overtaking</button>
+    </div>
+    
+    <div>
+      Driving faults: <span>[Here will be the number of driving faults]</span>
+    </div>
+    
+    <div>
+      Serious faults: <span>[Here will be the number of serious faults]</span>
+    </div>
+    
+    <div>
+      Dangerous faults: <span>[Here will be the number of dangerous faults]</span>
+    </div>    
+  </div>
+</ion-content>
