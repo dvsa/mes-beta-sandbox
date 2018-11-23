@@ -10,9 +10,9 @@
   <h2>Simple action button where we can record driving, serious and dangerous faults</h2>
 
   <div>
-    <button (click)="pickDrivingFaultType()">Driving fault</button>
-    <button (click)="pickSeriousFaultType()">Serious fault</button>
-    <button (click)="pickDangerousFaultType()">Dangerous fault</button>
+    <button ion-button (click)="pickDrivingFaultType()">Driving fault</button>
+    <button ion-button color="secondary" (click)="pickSeriousFaultType()">Serious fault</button>
+    <button ion-button color="danger" (click)="pickDangerousFaultType()">Dangerous fault</button>
   </div>
 
   <div>
@@ -23,7 +23,7 @@
     <h3>Judgement</h3>
 
     <div>
-      <button (click)="addFault()">Overtaking</button>
+      <button ion-button color="light" (click)="addFault('judgement', 'overtaking')">Overtaking</button>
     </div>
     
     <div>

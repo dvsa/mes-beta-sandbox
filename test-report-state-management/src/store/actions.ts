@@ -4,7 +4,9 @@ import { FaultType } from '../data-models/fault-type';
 
 export enum ActionTypes {
   PickFaultType = 'PickFaultType',
-  AddFault = 'AddFault',
+  AddDrivingFault = 'AddFault',
+  AddSeriousFault = 'AddSeriousFault',
+  AddDangerousFault = 'AddDangerousFault'
 }
 
 export class PickFaultType implements Action {
@@ -12,7 +14,17 @@ export class PickFaultType implements Action {
   constructor(public faultType: FaultType) {}
 }
 
-export class AddFault implements Action {
-  readonly type: string = ActionTypes.AddFault;
-  constructor(public testActivityCategory: string, public testActivity: string, public faultType: FaultType) {}
+export class AddDrivingFault implements Action {
+  readonly type: string = ActionTypes.AddDrivingFault;
+  constructor(public testActivityCategory: string, public testActivity: string) {}
+}
+
+export class AddSeriousFault implements Action {
+  readonly type: string = ActionTypes.AddSeriousFault;
+  constructor(public testActivityCategory: string, public testActivity: string) {}
+}
+
+export class AddDangerousFault implements Action {
+  readonly type: string = ActionTypes.AddDangerousFault;
+  constructor(public testActivityCategory: string, public testActivity: string) {}
 }

@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { FaultType } from '../../data-models/fault-type';
-import { PickFaultType, AddFault } from '../../store/actions';
+import { 
+  PickFaultType,
+  AddDrivingFault,
+  AddSeriousFault,
+  AddDangerousFault,
+} from '../../store/actions';
 
 @Component({
   selector: 'page-home',
@@ -31,9 +36,20 @@ export class HomePage {
     this.store.dispatch(new PickFaultType(faultType));
   }
 
-  addFault() {
-    const testActivityCategory = 'Judgement';
-    const testActivity = 'Overtaking';
-    this.store.dispatch(new AddFault(testActivityCategory, testActivity, this.pickedFaultType));
+  addFault(testActivityCategory, testActivity) {
+    if (this.pickedFaultType === FaultType.driving) {
+      this.store.dispatch(new AddDrivingFault(testActivityCategory, testActivity));
+      return;
+    }
+
+    if (this.pickedFaultType === FaultType.serious) {
+      this.store.dispatch(new AddSeriousFault(testActivityCategory, testActivity));
+      return;
+    }
+
+    if (this.pickedFaultType === FaultType.dangerous) {
+      this.store.dispatch(new AddDangerousFault(testActivityCategory, testActivity));
+      return;
+    }
   }
 }
