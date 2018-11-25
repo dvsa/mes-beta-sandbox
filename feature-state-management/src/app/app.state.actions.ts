@@ -12,3 +12,5 @@ export class LogIn implements Action {
 export class LogOut implements Action {
   readonly type = ActionTypes.LogOut;
 }
+
+export type ActionsUnion = LogIn | LogOut;

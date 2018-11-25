@@ -12,3 +12,5 @@ export class Increment implements Action {
 export class Decrement implements Action {
   readonly type = ActionTypes.Decrement;
 }
+
+export type ActionsUnion = Increment | Decrement;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'page-home',
@@ -11,8 +11,8 @@ export class HomePage {
 
   loggedIn$: Observable<string>;
 
-  constructor(public navCtrl: NavController, private store: Store<{ appState: any }>) {
-    this.loggedIn$ = store.select(state => state.appState.loggedIn);
+  constructor(public navCtrl: NavController, private store: Store<{ rootState: any }>) {
+    this.loggedIn$ = store.select(state => state.rootState.loggedIn);
   }
 
 }

@@ -1,9 +1,8 @@
-import { Action } from '@ngrx/store';
-import { ActionTypes } from './feature-state.actions';
+import { ActionTypes, ActionsUnion } from './feature-state.actions';
 
-export const initialState = 0;
+export const initialState: number = 0;
 
-export function featureReducer(state = initialState, action: Action) {
+export function featureReducer(state = initialState, action: ActionsUnion) : number {
   switch (action.type) {
     case ActionTypes.Increment:
       return state + 1;

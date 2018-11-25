@@ -9,7 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { appStateReducer } from './app.state.reducer';
+import { rootStateReducer } from './app.state.reducer';
 
 @NgModule({
   declarations: [
@@ -19,9 +19,8 @@ import { appStateReducer } from './app.state.reducer';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    StoreModule.forRoot({ appState: appStateReducer }),
-    StoreDevtoolsModule.instrument(),
-    FeatureStatePageModule
+    StoreModule.forRoot({ rootState: rootStateReducer }),
+    StoreDevtoolsModule.instrument()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

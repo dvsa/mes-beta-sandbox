@@ -1,11 +1,14 @@
-import { ActionTypes } from './app.state.actions';
-import { Action } from '@ngrx/store';
+import { ActionTypes, ActionsUnion } from './app.state.actions';
 
-export const initialState = {
+interface RootState {
+  loggedIn: string;
+}
+
+export const initialState: RootState = {
   loggedIn: 'false'
 };
 
-export function appStateReducer(state = initialState, action: Action) {
+export function rootStateReducer(state = initialState, action: ActionsUnion) : RootState {
   switch (action.type) {
     case ActionTypes.LogIn:
       return {
