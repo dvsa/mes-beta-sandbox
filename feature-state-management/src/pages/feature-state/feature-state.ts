@@ -15,7 +15,7 @@ export class FeatureStatePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private store: Store<{ appState: any }>) {
     this.loggedIn$ = store.select(state => state.appState.loggedIn);
-    this.count$ = store.select(state => state.count);
+    this.count$ = store.select(state => state.count); // tslint:disable-line
   }
 
 }

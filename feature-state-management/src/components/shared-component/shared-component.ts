@@ -4,16 +4,16 @@ import { Store } from '@ngrx/store';
 import { Increment, Decrement } from '../../pages/feature-state/feature-state.actions';
 
 @Component({
-  selector: 'feature-state',
-  templateUrl: 'feature-state.html'
+  selector: 'shared-component',
+  templateUrl: 'shared-component.html'
 })
-export class FeatureStateComponent {
+export class SharedComponent {
 
   text: string;
 
   constructor(private store: Store<{ count: number }>) {
-    console.log('Hello FeatureStateComponent Component');
-    this.text = 'FeatureStateComponent';
+    console.log('Hello SharedComponent Component');
+    this.text = 'SharedComponent';
   }
 
   increment() {

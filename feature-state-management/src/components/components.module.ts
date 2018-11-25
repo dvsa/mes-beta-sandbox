@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { FeatureStateComponent } from './feature-state/feature-state';
+import { SharedComponent } from './shared-component/shared-component';
 @NgModule({
-	declarations: [FeatureStateComponent],
+	declarations: [SharedComponent],
 	imports: [],
-	exports: [FeatureStateComponent]
+	exports: [SharedComponent]
 })
 export class ComponentsModule {}
