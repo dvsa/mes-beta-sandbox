@@ -1,6 +1,6 @@
 import { ActionTypes, ActionsUnion } from './app.state.actions';
 
-interface RootState {
+export interface RootState {
   loggedIn: string;
 }
 
@@ -26,3 +26,5 @@ export function rootStateReducer(state = initialState, action: ActionsUnion) : R
       return state;
   }
 }
+
+export const getLoggedIn = (state: RootState) => state.loggedIn;

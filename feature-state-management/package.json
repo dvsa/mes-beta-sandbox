@@ -8,7 +8,8 @@
     "start": "ionic-app-scripts serve",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint"
+    "lint": "ionic-app-scripts lint",
+    "test": "jest"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
@@ -34,6 +35,8 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.2.0",
+    "jest": "^23.6.0",
+    "jest-preset-angular": "^6.0.1",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project"
