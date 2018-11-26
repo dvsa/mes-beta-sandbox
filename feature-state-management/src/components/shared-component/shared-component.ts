@@ -12,10 +12,6 @@ export class SharedComponent {
   @Input() logIn;
   @Input() logOut;
 
-  text: string;
-
-  constructor() {
-    this.text = 'SharedComponent';
-  }
+  text: string = 'SharedComponent';
 
 }

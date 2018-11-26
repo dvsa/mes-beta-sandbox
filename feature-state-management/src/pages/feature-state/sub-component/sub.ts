@@ -12,10 +12,6 @@ export class SubComponent {
   @Input() logIn;
   @Input() logOut;
 
-  text: string;
-
-  constructor() {
-    this.text = 'SubComponent';
-  }
+  text: string = 'SubComponent';
 
 }
