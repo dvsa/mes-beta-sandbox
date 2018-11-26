@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { getLoggedInState } from '../../app/app.state.selector';
 
-interface FeatureStatePageState {
+interface FeaturePageState {
   loggedIn$: Observable<string>;
   count$: Observable<number>;
 }
@@ -19,7 +19,7 @@ interface FeatureStatePageState {
 })
 export class FeaturePage {
 
-  featurePageState: FeatureStatePageState;
+  featurePageState: FeaturePageState;
 
   constructor(private store: Store<{ rootState: any, count: number }>) {
     this.featurePageState = {
