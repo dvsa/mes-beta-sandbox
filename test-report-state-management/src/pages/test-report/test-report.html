@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Test Report
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -16,7 +16,7 @@
   </div>
 
   <div>
-    Selected fault type: <span>{{ faults.pickedFaultType }}</span>
+    Selected fault type: <span>{{ testReport.pickedFaultType }}</span>
   </div>
 
   <div>
@@ -27,15 +27,15 @@
     </div>
     
     <div>
-      Driving faults: <span>{{ faults.judgement.overtaking.driving }}</span>
+      Driving faults: <span>{{ testReport.judgement.overtaking.driving }}</span>
     </div>
     
     <div>
-      Serious faults: <span>{{ faults.judgement.overtaking.serious }}</span>
+      Serious faults: <span>{{ testReport.judgement.overtaking.serious }}</span>
     </div>
     
     <div>
-      Dangerous faults: <span>{{ faults.judgement.overtaking.dangerous }}</span>
+      Dangerous faults: <span>{{ testReport.judgement.overtaking.dangerous }}</span>
     </div>    
   </div>
 </ion-content>

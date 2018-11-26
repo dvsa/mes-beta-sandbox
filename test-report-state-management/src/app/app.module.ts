@@ -7,24 +7,24 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { TestReport } from '../pages/test-report/test-report';
 import { reducer } from '../store/test-report.reducer';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    TestReport
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ faults: reducer }),
+    StoreModule.forRoot({ testReport: reducer }),
     IonicModule.forRoot(MyApp),
     StoreDevtoolsModule.instrument() 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    TestReport
   ],
   providers: [
     StatusBar,

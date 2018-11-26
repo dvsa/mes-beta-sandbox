@@ -24,15 +24,15 @@ interface Faults {
 }
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-test-report',
+  templateUrl: 'test-report.html'
 })
-export class HomePage {
+export class TestReport {
 
-  faults: Faults
+  testReport: any
 
   constructor(private store: Store<any>) {
-    store.select(state => state.faults).subscribe(data => this.faults = data);
+    store.select(state => state.testReport).subscribe(data => this.testReport = data);
   }
 
   pickDrivingFaultType() {
@@ -56,17 +56,17 @@ export class HomePage {
       category: testActivityCategory,
       activity: testActivity
     }
-    if (this.faults.pickedFaultType === FaultType.driving) {
+    if (this.testReport.pickedFaultType === FaultType.driving) {
       this.store.dispatch(new AddDrivingFault(payload));
       return;
     }
 
-    if (this.faults.pickedFaultType === FaultType.serious) {
+    if (this.testReport.pickedFaultType === FaultType.serious) {
       this.store.dispatch(new AddSeriousFault(payload));
       return;
     }
 
-    if (this.faults.pickedFaultType === FaultType.dangerous) {
+    if (this.testReport.pickedFaultType === FaultType.dangerous) {
       this.store.dispatch(new AddDangerousFault(payload));
       return;
     }

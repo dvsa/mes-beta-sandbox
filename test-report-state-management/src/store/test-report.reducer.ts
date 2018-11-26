@@ -6,12 +6,12 @@ import * as fromTestReport from './test-report.actions';
 import { FaultType } from '../models/fault-type';
 import { Action } from 'rxjs/scheduler/Action';
 
-export interface FaultState {
+export interface TestReportState {
   pickedFaultType: FaultType,
   judgement: {}
 }
 
-export const initialState: FaultState = {
+export const initialState: TestReportState = {
   pickedFaultType: FaultType.driving,
   judgement: {
     overtaking: {
@@ -22,7 +22,7 @@ export const initialState: FaultState = {
   },
 };
 
-export function reducer(state = initialState, action: fromTestReport.FaultActions): FaultState {
+export function reducer(state = initialState, action: fromTestReport.FaultActions): TestReportState {
   let testActivityCategory = '';
   let testActivity = '';
   let faults = {
