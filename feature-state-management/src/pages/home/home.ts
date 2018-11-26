@@ -12,8 +12,8 @@ export class HomePage {
 
   loggedIn$: Observable<string>;
 
-  constructor(private store: Store<{ rootState: RootState }>, private appStateSelector: AppStateSelector) {
-    this.loggedIn$ = store.select(appStateSelector.getLoggedInState);
+  constructor(store: Store<{ rootState: RootState }>, appStateSelector: AppStateSelector) {
+    this.loggedIn$ = store.select(appStateSelector.getLoggedInState());
   }
 
 }

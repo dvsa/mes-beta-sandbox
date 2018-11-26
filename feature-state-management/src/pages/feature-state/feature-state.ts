@@ -1,6 +1,6 @@
-import { getLoggedInState } from './../../app/app.state.selector';
+import { AppStateSelector } from './../../app/app.state.selector';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -14,8 +14,8 @@ export class FeatureStatePage {
   loggedIn$: Observable<string>;
   count$: Observable<number>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private store: Store<{ rootState: any, count: number }>) {
-    this.loggedIn$ = store.select(getLoggedInState);
+  constructor(appStateSelector: AppStateSelector, store: Store<{ rootState: any, count: number }>) {
+    this.loggedIn$ = store.select(appStateSelector.getLoggedInState());
     this.count$ = store.select(appState => appState.count);
   }
 

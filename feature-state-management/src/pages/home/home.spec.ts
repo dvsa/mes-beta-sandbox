@@ -1,32 +1,41 @@
-import { getLoggedInState, getRootState, AppStateSelector } from './../../app/app.state.selector';
+import { rootStateReducer, initialState } from './../../app/app.state.reducer';
+import { AppStateSelector } from './../../app/app.state.selector';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { HomePage } from './home';
-import { Store } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 
 describe('Home', () => {
   let fixture: ComponentFixture<HomePage>;
   let component: HomePage;
   let appStateSelector: AppStateSelector;
-
-  const storeStub = {
-    select: jest.fn()
-  };
+  let store: Store<number>;
 
   beforeEach(() => {
     appStateSelector = new AppStateSelector();
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [HomePage],
+      imports: [
+        StoreModule.forRoot({
+          rootState: rootStateReducer
+        })
+      ],
       providers: [
-        { provide: Store, useValue: storeStub },
         { provide: AppStateSelector, useValue: appStateSelector }
       ]
     }).compileComponents();
 
+    store = TestBed.get(Store);
+    jest.spyOn(store, 'select');
+    jest.spyOn(appStateSelector, 'getLoggedInState');
+
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
+
+    fixture.detectChanges();
+
   });
 
   it('should create the HomePage component', () => {
@@ -34,7 +43,12 @@ describe('Home', () => {
   });
 
   it('should call .select on store with the correct selector', () => {
-    expect(storeStub.select).toHaveBeenCalledWith(appStateSelector.getLoggedInState);
+    expect(store.select).toHaveBeenCalled();
+    expect(appStateSelector.getLoggedInState).toHaveBeenCalled();
   });
+
+  it('should generate the correct state', () => {
+    component.loggedIn$.subscribe(result => expect(result).toBe(initialState.loggedIn));
+  })
 
 });

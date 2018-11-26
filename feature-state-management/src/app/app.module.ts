@@ -1,4 +1,3 @@
-import { FeatureStatePageModule } from './../pages/feature-state/feature-state.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -10,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { rootStateReducer } from './app.state.reducer';
+import { AppStateSelector } from './app.state.selector';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { rootStateReducer } from './app.state.reducer';
   providers: [
     StatusBar,
     SplashScreen,
+    AppStateSelector,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

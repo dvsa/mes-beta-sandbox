@@ -3,11 +3,15 @@ import { createSelector, createFeatureSelector } from "@ngrx/store";
 
 export class AppStateSelector {
 
-  public getRootState = createFeatureSelector<RootState>('rootState');
+  public getRootState() {
+    return createFeatureSelector<RootState>('rootState');
+  }
 
-  public getLoggedInState = createSelector(
-    this.getRootState,
-    getLoggedIn
-  );
+  public getLoggedInState() {
+    return createSelector(
+      this.getRootState(),
+      getLoggedIn
+    )
+  }
 
 }
