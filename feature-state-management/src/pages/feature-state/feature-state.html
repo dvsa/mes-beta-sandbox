@@ -9,6 +9,12 @@
 <ion-content padding>
   <p>Logged in: {{loggedIn$ | async}}</p>
   <p>Count: {{count$ | async}}</p>
-  <shared-component margin></shared-component>
+  <shared-component margin 
+    [increment]="incrementDispatcher"
+    [decrement]="decrementDispatcher"
+    [logIn]="logInDispatcher"
+    [logOut]="logOutDispatcher"
+  >
+  </shared-component>
   <sub margin></sub>
 </ion-content>
