@@ -8,7 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { reducer } from '../store/reducer';
+import { reducer } from '../store/test-report.reducer';
 
 @NgModule({
   declarations: [

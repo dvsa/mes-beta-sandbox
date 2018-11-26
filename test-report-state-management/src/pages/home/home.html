@@ -16,7 +16,7 @@
   </div>
 
   <div>
-    Selected fault type: <span>{{ pickedFaultType }}</span>
+    Selected fault type: <span>{{ faults.pickedFaultType }}</span>
   </div>
 
   <div>
@@ -27,15 +27,15 @@
     </div>
     
     <div>
-      Driving faults: <span>[Here will be the number of driving faults]</span>
+      Driving faults: <span>{{ faults.judgement.overtaking.driving }}</span>
     </div>
     
     <div>
-      Serious faults: <span>[Here will be the number of serious faults]</span>
+      Serious faults: <span>{{ faults.judgement.overtaking.serious }}</span>
     </div>
     
     <div>
-      Dangerous faults: <span>[Here will be the number of dangerous faults]</span>
+      Dangerous faults: <span>{{ faults.judgement.overtaking.dangerous }}</span>
     </div>    
   </div>
 </ion-content>

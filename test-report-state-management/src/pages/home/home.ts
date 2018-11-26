@@ -1,23 +1,38 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { FaultType } from '../../data-models/fault-type';
+import { FaultType } from '../../models/fault-type';
+import { TestActivityReference } from '../../models/test-activity-reference';
 import { 
   PickFaultType,
   AddDrivingFault,
   AddSeriousFault,
   AddDangerousFault,
-} from '../../store/actions';
+} from '../../store/test-report.actions';
+
+interface Fault {
+  driving: number
+  serious: number
+  dangerous: number
+}
+
+interface Faults {
+  pickedFaultType: FaultType
+  judgement: {
+    overtaking: Fault
+  }
+}
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  pickedFaultType: FaultType;
+
+  faults: Faults
 
   constructor(private store: Store<any>) {
-    store.select(state => state.faults).subscribe(data => this.pickedFaultType = data.pickedFaultType);
+    store.select(state => state.faults).subscribe(data => this.faults = data);
   }
 
   pickDrivingFaultType() {
@@ -37,18 +52,22 @@ export class HomePage {
   }
 
   addFault(testActivityCategory, testActivity) {
-    if (this.pickedFaultType === FaultType.driving) {
-      this.store.dispatch(new AddDrivingFault(testActivityCategory, testActivity));
+    const payload: TestActivityReference = {
+      category: testActivityCategory,
+      activity: testActivity
+    }
+    if (this.faults.pickedFaultType === FaultType.driving) {
+      this.store.dispatch(new AddDrivingFault(payload));
       return;
     }
 
-    if (this.pickedFaultType === FaultType.serious) {
-      this.store.dispatch(new AddSeriousFault(testActivityCategory, testActivity));
+    if (this.faults.pickedFaultType === FaultType.serious) {
+      this.store.dispatch(new AddSeriousFault(payload));
       return;
     }
 
-    if (this.pickedFaultType === FaultType.dangerous) {
-      this.store.dispatch(new AddDangerousFault(testActivityCategory, testActivity));
+    if (this.faults.pickedFaultType === FaultType.dangerous) {
+      this.store.dispatch(new AddDangerousFault(payload));
       return;
     }
   }
