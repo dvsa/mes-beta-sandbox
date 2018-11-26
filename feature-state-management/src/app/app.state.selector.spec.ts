@@ -14,13 +14,13 @@ describe('AppState selector', () => {
   });
 
   it('getRootState returns rootState', () => {
-    const rootState = appStateSelector.getRootState()(appState);
-    expect(rootState).toBe(appState.rootState);
+    const resultState = appStateSelector.getRootState()(appState);
+    expect(resultState).toBe(appState.rootState);
   });
 
   it('getLoggedInState returns loggedIn', () => {
-    const rootState = appStateSelector.getLoggedInState()(appState);
-    expect(rootState).toBe(appState.rootState.loggedIn);
+    const resultState = appStateSelector.getLoggedInState()(appState);
+    expect(resultState).toBe(appState.rootState.loggedIn);
   });
 
 });

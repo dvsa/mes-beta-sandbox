@@ -1,4 +1,4 @@
-import { rootStateReducer, initialState } from './../../app/app.state.reducer';
+import { rootStateReducer, initialAppState } from './../../app/app.state.reducer';
 import { AppStateSelector } from './../../app/app.state.selector';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -48,7 +48,7 @@ describe('Home', () => {
   });
 
   it('should generate the correct state', () => {
-    component.loggedIn$.subscribe(result => expect(result).toBe(initialState.loggedIn));
+    component.homePageState.loggedIn$.subscribe(result => expect(result).toBe(initialAppState.loggedIn));
   })
 
 });

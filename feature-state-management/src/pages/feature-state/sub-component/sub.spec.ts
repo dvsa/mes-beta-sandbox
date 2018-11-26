@@ -1,4 +1,3 @@
-import { Increment, Decrement } from './../feature-state.actions';
 import { rootStateReducer } from './../../../app/app.state.reducer';
 import { featureReducer } from '../feature-state.reducer';
 import { SubComponent } from './sub';
@@ -37,13 +36,6 @@ describe('Home', () => {
 
   it('should create the SubComponent component', () => {
     expect(component).toBeDefined();
-  });
-
-  it('should dispatch the correct actions', () => {
-    component.increment();
-    expect(store.dispatch).toHaveBeenCalledWith(new Increment());
-    component.decrement();
-    expect(store.dispatch).toHaveBeenCalledWith(new Decrement());
   });
 
 });

@@ -6,6 +6,11 @@ import { IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
+interface FeatureStatePageState {
+  loggedIn$: Observable<string>;
+  count$: Observable<number>;
+}
+
 @IonicPage()
 @Component({
   selector: 'page-feature-state',
@@ -13,12 +18,13 @@ import { Observable } from 'rxjs/Observable';
 })
 export class FeatureStatePage {
 
-  loggedIn$: Observable<string>;
-  count$: Observable<number>;
+  state: FeatureStatePageState;
 
   constructor(appStateSelector: AppStateSelector, private store: Store<{ rootState: any, count: number }>) {
-    this.loggedIn$ = store.select(appStateSelector.getLoggedInState());
-    this.count$ = store.select(appState => appState.count);
+    this.state = {
+      loggedIn$: store.select(appStateSelector.getLoggedInState()),
+      count$: store.select(appState => appState.count)
+    }
   }
 
   incrementDispatcher = () => {

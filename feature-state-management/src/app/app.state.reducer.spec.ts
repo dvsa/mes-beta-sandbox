@@ -1,9 +1,9 @@
 import { LogIn } from './app.state.actions';
-import { rootStateReducer, initialState, RootState } from "./app.state.reducer";
+import { rootStateReducer, initialAppState, RootState } from "./app.state.reducer";
 
 describe('rootStateReducer', () => {
 
-  const rootState: RootState = initialState;
+  const rootState: RootState = initialAppState;
 
   it('should compute the correct state when a LogIn action occurs', () => {
     expect(rootStateReducer(rootState, new LogIn())).toEqual({

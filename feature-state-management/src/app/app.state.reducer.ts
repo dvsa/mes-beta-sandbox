@@ -4,11 +4,11 @@ export interface RootState {
   loggedIn: string;
 }
 
-export const initialState: RootState = {
+export const initialAppState: RootState = {
   loggedIn: 'false'
 };
 
-export function rootStateReducer(state = initialState, action: ActionsUnion) : RootState {
+export function rootStateReducer(state = initialAppState, action: ActionsUnion) : RootState {
   switch (action.type) {
     case ActionTypes.LogIn:
       return {
