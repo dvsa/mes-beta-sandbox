@@ -9,7 +9,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { rootStateReducer } from './app.state.reducer';
-import { AppStateSelector } from './app.state.selector';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { AppStateSelector } from './app.state.selector';
   providers: [
     StatusBar,
     SplashScreen,
-    AppStateSelector,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
