@@ -1,25 +1,20 @@
-import { AppStateSelector } from './app.state.selector';
+import { getRootState, getLoggedInState } from "./app.state.selector";
 
 describe('AppState selector', () => {
 
-  let appStateSelector: AppStateSelector;
   const appState = {
     rootState: {
       loggedIn: 'false'
     }
   }
 
-  beforeEach(() => {
-    appStateSelector = new AppStateSelector();
-  });
-
   it('getRootState returns rootState', () => {
-    const resultState = appStateSelector.getRootState()(appState);
+    const resultState = getRootState(appState);
     expect(resultState).toBe(appState.rootState);
   });
 
   it('getLoggedInState returns loggedIn', () => {
-    const resultState = appStateSelector.getLoggedInState()(appState);
+    const resultState = getLoggedInState(appState);
     expect(resultState).toBe(appState.rootState.loggedIn);
   });
 

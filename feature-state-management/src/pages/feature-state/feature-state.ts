@@ -1,10 +1,11 @@
+import { getCountState } from './feature-state.selector';
 import { LogIn, LogOut } from './../../app/app.state.actions';
 import { Increment, Decrement } from './feature-state.actions';
-import { AppStateSelector } from './../../app/app.state.selector';
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { getLoggedInState } from '../../app/app.state.selector';
 
 interface FeatureStatePageState {
   loggedIn$: Observable<string>;
@@ -20,10 +21,10 @@ export class FeatureStatePage {
 
   state: FeatureStatePageState;
 
-  constructor(appStateSelector: AppStateSelector, private store: Store<{ rootState: any, count: number }>) {
+  constructor(private store: Store<{ rootState: any, count: number }>) {
     this.state = {
-      loggedIn$: store.select(appStateSelector.getLoggedInState()),
-      count$: store.select(appState => appState.count)
+      loggedIn$: store.select(getLoggedInState),
+      count$: store.select(getCountState)
     }
   }
 

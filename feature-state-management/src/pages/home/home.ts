@@ -1,8 +1,8 @@
 import { RootState } from './../../app/app.state.reducer';
-import { AppStateSelector } from './../../app/app.state.selector';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
+import { getLoggedInState } from '../../app/app.state.selector';
 
 interface HomePageState {
   loggedIn$: Observable<string>;
@@ -16,9 +16,9 @@ export class HomePage {
 
   homePageState: HomePageState;
 
-  constructor(store: Store<{ rootState: RootState }>, appStateSelector: AppStateSelector) {
+  constructor(store: Store<{ rootState: RootState }>) {
     this.homePageState = {
-      loggedIn$: store.select(appStateSelector.getLoggedInState())
+      loggedIn$: store.select(getLoggedInState)
     }
   }
 

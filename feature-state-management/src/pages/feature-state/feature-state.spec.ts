@@ -6,16 +6,13 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { Store, StoreModule } from '@ngrx/store';
 import { FeatureStatePage } from './feature-state';
-import { AppStateSelector } from '../../app/app.state.selector';
 
 describe('Home', () => {
   let fixture: ComponentFixture<FeatureStatePage>;
   let component: FeatureStatePage;
   let store: Store<number>;
-  let appStateSelector: AppStateSelector;
 
   beforeEach(() => {
-    appStateSelector = new AppStateSelector();
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [FeatureStatePage],
@@ -24,9 +21,6 @@ describe('Home', () => {
           rootState: rootStateReducer,
           count: featureReducer
         })
-      ],
-      providers: [
-        { provide: AppStateSelector, useValue: appStateSelector }
       ]
     }).compileComponents();
 
