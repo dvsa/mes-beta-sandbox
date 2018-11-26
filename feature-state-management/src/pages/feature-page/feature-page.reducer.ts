@@ -1,4 +1,4 @@
-import { ActionTypes, ActionsUnion } from './feature-state.actions';
+import { ActionTypes, ActionsUnion } from './feature-page.actions';
 
 export const initialFeatureState: number = 0;
 

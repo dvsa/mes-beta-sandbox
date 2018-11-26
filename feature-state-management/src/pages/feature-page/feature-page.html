@@ -7,8 +7,8 @@
 </ion-header>
 
 <ion-content padding>
-  <p>Logged in: {{loggedIn$ | async}}</p>
-  <p>Count: {{count$ | async}}</p>
+  <p>Logged in: {{featurePageState.loggedIn$ | async}}</p>
+  <p>Count: {{featurePageState.count$ | async}}</p>
   <shared-component margin 
     [increment]="incrementDispatcher"
     [decrement]="decrementDispatcher"

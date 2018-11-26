@@ -9,7 +9,7 @@
 <ion-content padding>
   The world is your oyster.
   <p>
-    Logged in: {{loggedIn$ | async}}
+    Logged in: {{homePageState.loggedIn$ | async}}
   </p>
-  <button ion-button navPush="FeatureStatePage">Feature state page</button>
+  <button ion-button navPush="FeaturePage">Feature state page</button>
 </ion-content>

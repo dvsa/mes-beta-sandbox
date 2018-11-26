@@ -1,6 +1,6 @@
-import { getCountState } from './feature-state.selector';
+import { getCountState } from './feature-page.selector';
 import { LogIn, LogOut } from './../../app/app.state.actions';
-import { Increment, Decrement } from './feature-state.actions';
+import { Increment, Decrement } from './feature-page.actions';
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
@@ -14,15 +14,15 @@ interface FeatureStatePageState {
 
 @IonicPage()
 @Component({
-  selector: 'page-feature-state',
-  templateUrl: 'feature-state.html',
+  selector: 'page-feature-page',
+  templateUrl: 'feature-page.html',
 })
-export class FeatureStatePage {
+export class FeaturePage {
 
-  state: FeatureStatePageState;
+  featurePageState: FeatureStatePageState;
 
   constructor(private store: Store<{ rootState: any, count: number }>) {
-    this.state = {
+    this.featurePageState = {
       loggedIn$: store.select(getLoggedInState),
       count$: store.select(getCountState)
     }
