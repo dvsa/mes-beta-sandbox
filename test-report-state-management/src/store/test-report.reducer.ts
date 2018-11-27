@@ -2,13 +2,16 @@ import set from 'lodash.set';
 import get from 'lodash.get';
 
 import * as fromTestReport from './test-report.actions';
+import * as fromCandidateInfo from './candidate-info.actions';
 
 import { FaultType } from '../models/fault-type';
-import { Action } from 'rxjs/scheduler/Action';
+import { ActivityFaults } from '../models/activity-faults';
 
 export interface TestReportState {
   pickedFaultType: FaultType,
-  judgement: {}
+  judgement: {
+    overtaking: ActivityFaults,
+  }
 }
 
 export const initialState: TestReportState = {
@@ -22,7 +25,7 @@ export const initialState: TestReportState = {
   },
 };
 
-export function reducer(state = initialState, action: fromTestReport.FaultActions): TestReportState {
+export function reducer(state = initialState, action: fromTestReport.FaultActions | fromCandidateInfo.CandidateInfoActions): TestReportState {
   let testActivityCategory = '';
   let testActivity = '';
   let faults = {
@@ -61,6 +64,24 @@ export function reducer(state = initialState, action: fromTestReport.FaultAction
       faults = get(state, `${testActivityCategory}.${testActivity}`);
 
       return set(state, `${testActivityCategory}.${testActivity}`, { ...faults, dangerous: faults.dangerous + 1 });
+
+    case fromCandidateInfo.LOAD_CANDIDATE_INFO:
+      console.log(fromCandidateInfo.LOAD_CANDIDATE_INFO);
+      return {
+        ...state,
+      }
+
+    case fromCandidateInfo.LOAD_CANDIDATE_INFO_FAILURE:
+      console.log(fromCandidateInfo.LOAD_CANDIDATE_INFO_FAILURE);
+      return {
+        ...state,
+      }
+
+    case fromCandidateInfo.LOAD_CANDIDATE_INFO_SUCCESS:
+      console.log(fromCandidateInfo.LOAD_CANDIDATE_INFO_SUCCESS);
+      return {
+        ...state,
+      }
 
     default:
       return state;

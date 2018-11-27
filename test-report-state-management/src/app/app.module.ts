@@ -6,9 +6,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+//import { EffectsModule } from '@ngrx/effects';
+
 import { MyApp } from './app.component';
 import { TestReport } from '../pages/test-report/test-report';
 import { reducer } from '../store/test-report.reducer';
+//import { CandidateInfoEffects } from '../store/candidate-info.effects';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { reducer } from '../store/test-report.reducer';
   imports: [
     BrowserModule,
     StoreModule.forRoot({ testReport: reducer }),
+    //EffectsModule.forRoot([CandidateInfoEffects]),
     IonicModule.forRoot(MyApp),
     StoreDevtoolsModule.instrument() 
   ],
