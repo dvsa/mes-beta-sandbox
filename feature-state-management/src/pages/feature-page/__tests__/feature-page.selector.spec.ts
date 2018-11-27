@@ -1,4 +1,4 @@
-import { getCountState } from './feature-page.selector';
+import { getCountState } from '../feature-page.selector';
 
 
 describe('AppState selector', () => {

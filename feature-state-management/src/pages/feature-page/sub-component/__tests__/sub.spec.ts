@@ -1,4 +1,4 @@
-import { SubComponent } from './sub';
+import { SubComponent } from '../sub';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 

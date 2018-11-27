@@ -1,5 +1,5 @@
-import { LogIn } from './app.state.actions';
-import { rootStateReducer, initialAppState, RootState } from "./app.state.reducer";
+import { LogIn } from '../app.state.actions';
+import { rootStateReducer, initialAppState, RootState } from "../app.state.reducer";
 
 describe('rootStateReducer', () => {
 

@@ -1,11 +1,11 @@
-import { Increment, Decrement } from './feature-page.actions';
-import { rootStateReducer, initialAppState } from './../../app/app.state.reducer';
-import { featureReducer, initialFeatureState } from './feature-page.reducer';
+import { Increment, Decrement } from '../feature-page.actions';
+import { rootStateReducer, initialAppState } from '../../../app/app.state.reducer';
+import { featureReducer, initialFeatureState } from '../feature-page.reducer';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { Store, StoreModule } from '@ngrx/store';
-import { FeaturePage } from './feature-page';
+import { FeaturePage } from '../feature-page';
 
 describe('Home', () => {
   let fixture: ComponentFixture<FeaturePage>;
@@ -41,7 +41,7 @@ describe('Home', () => {
   it('should generate the correct state', () => {
     component.featurePageState.loggedIn$.subscribe(result => expect(result).toBe(initialAppState.loggedIn));
     component.featurePageState.count$.subscribe(result => expect(result).toBe(initialFeatureState));
-  })
+  });
 
   it('should dispatch the correct actions', () => {
     component.incrementDispatcher();
