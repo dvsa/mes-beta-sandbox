@@ -1,8 +1,8 @@
-import { rootStateReducer, initialAppState } from './../../app/app.state.reducer';
+import { rootStateReducer, initialAppState } from '../../../app/app.state.reducer';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { HomePage } from './home';
+import { HomePage } from '../home';
 import { Store, StoreModule } from '@ngrx/store';
 
 describe('Home', () => {
