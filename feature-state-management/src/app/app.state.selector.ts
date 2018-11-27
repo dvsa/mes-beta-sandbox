@@ -1,13 +1,6 @@
 import { getLoggedIn, RootState } from './app.state.reducer';
 import { createSelector, createFeatureSelector } from "@ngrx/store";
 
-export class AppStateSelector {
+export const getRootState = createFeatureSelector<RootState>('rootState');
 
-  public getRootState = createFeatureSelector<RootState>('rootState');
-
-  public getLoggedInState = createSelector(
-    this.getRootState,
-    getLoggedIn
-  );
-
-}
+export const getLoggedInState = createSelector(getRootState, getLoggedIn);

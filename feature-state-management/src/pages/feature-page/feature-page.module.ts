@@ -1,18 +1,18 @@
 import { SubComponent } from './sub-component/sub';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { FeatureStatePage } from './feature-state';
+import { FeaturePage } from './feature-page';
 import { ComponentsModule } from '../../components/components.module';
-import { featureReducer } from './feature-state.reducer';
+import { featureReducer } from './feature-page.reducer';
 import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
-    FeatureStatePage,
+    FeaturePage,
     SubComponent
   ],
   imports: [
-    IonicPageModule.forChild(FeatureStatePage),
+    IonicPageModule.forChild(FeaturePage),
     StoreModule.forFeature('count', featureReducer),
     ComponentsModule
   ],

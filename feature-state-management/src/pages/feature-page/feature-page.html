@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>feature-state-page</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <p>Logged in: {{featurePageState.loggedIn$ | async}}</p>
+  <p>Count: {{featurePageState.count$ | async}}</p>
+  <shared-component margin 
+    [increment]="incrementDispatcher"
+    [decrement]="decrementDispatcher"
+    [logIn]="logInDispatcher"
+    [logOut]="logOutDispatcher"
+  >
+  </shared-component>
+  <sub margin
+    [increment]="incrementDispatcher"
+    [decrement]="decrementDispatcher"
+    [logIn]="logInDispatcher"
+    [logOut]="logOutDispatcher"
+    [count$]="featurePageState.count$"
+  >
+  </sub>
+</ion-content>
