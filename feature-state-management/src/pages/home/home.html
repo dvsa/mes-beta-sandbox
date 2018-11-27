@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  The world is your oyster.
+  <p>
+    Logged in: {{homePageState.loggedIn$ | async}}
+  </p>
+  <button ion-button navPush="FeaturePage">Feature state page</button>
+</ion-content>

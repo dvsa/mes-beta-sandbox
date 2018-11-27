@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Test Report
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Simple action button where we can record driving, serious and dangerous faults</h2>
+
+  <div>
+    <button ion-button (click)="pickDrivingFaultType()">Driving fault</button>
+    <button ion-button color="secondary" (click)="pickSeriousFaultType()">Serious fault</button>
+    <button ion-button color="danger" (click)="pickDangerousFaultType()">Dangerous fault</button>
+  </div>
+
+  <div>
+    Selected fault type: <span>{{ testReport.pickedFaultType }}</span>
+  </div>
+
+  <div>
+    <h3>Judgement</h3>
+
+    <div>
+      <button ion-button color="light" (click)="addFault('judgement', 'overtaking')">Overtaking</button>
+    </div>
+    
+    <div>
+      Driving faults: <span>{{ testReport.judgement.overtaking.driving }}</span>
+    </div>
+    
+    <div>
+      Serious faults: <span>{{ testReport.judgement.overtaking.serious }}</span>
+    </div>
+    
+    <div>
+      Dangerous faults: <span>{{ testReport.judgement.overtaking.dangerous }}</span>
+    </div>    
+  </div>
+</ion-content>
