@@ -26,5 +26,3 @@ export function rootStateReducer(state = initialAppState, action: ActionsUnion) 
       return state;
   }
 }
-
-export const getLoggedIn = (state: RootState) => state.loggedIn;

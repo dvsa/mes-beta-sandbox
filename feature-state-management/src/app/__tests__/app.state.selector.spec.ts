@@ -1,4 +1,4 @@
-import { getRootState, getLoggedInState } from "./app.state.selector";
+import { getRootState, getLoggedInState } from "../app.state.selector";
 
 describe('AppState selector', () => {
 

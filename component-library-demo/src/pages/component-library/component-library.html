@@ -1,0 +1,149 @@
+<!--
+  Generated template for the ComponentLibraryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Component Library</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3>
+        <ion-card>
+          <ion-card-content>
+            <p><a href="/#/component-library">Buttons</a></p>
+            <p><a href="/#/component-library">Headings</a></p>
+            <p><a href="/#/component-library">Text</a></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+
+        <!-- BUTTONS -->
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Buttons</ion-card-title>
+            <ion-card-content>
+              <span class='mes-header-md'>Primary Button</span>
+              <p><code>mes-button</code></p>
+              <span class="mes-header-sm">Examples:</span>
+              <div>
+                  <mes-button label="Test Button"></mes-button>
+              </div>
+              <div>
+                  <mes-button isDisabled="true" label="Disabled Button"></mes-button>
+              </div>
+              <span class="mes-header-sm">Inputs:</span>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>Attribute</ion-col>
+                  <ion-col>Type</ion-col>
+                  <ion-col>Description</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>label</ion-col>
+                    <ion-col>string</ion-col>
+                    <ion-col>Text which appears on the button</ion-col>
+                  </ion-row>
+                  <ion-row>
+                      <ion-col>isDisabled</ion-col>
+                      <ion-col>boolean</ion-col>
+                      <ion-col>Should the button be disabled</ion-col>
+                    </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card-header>
+        </ion-card>
+
+        <!-- HEADINGS -->
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Headings</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>This card contains the global heading styles which can be used across the app</p>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <span class="mes-header-sm">Small Header</span>
+                </ion-col>
+                <ion-col>
+                  <code>mes-header-sm</code>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span class="mes-header-md">Medium Header</span>
+                </ion-col>
+                <ion-col>
+                  <code>mes-header-md</code>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span class="mes-header-lg">Large Header</span>
+                </ion-col>
+                <ion-col>
+                  <code>mes-header-lg</code>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span class="mes-header-xlg">XL Header</span>
+                </ion-col>
+                <ion-col>
+                  <code>mes-header-xlg</code>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span class="mes-header-xxlg">XXL Header</span>
+                </ion-col>
+                <ion-col>
+                  <code>mes-header-xxlg</code>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- TEXT -->
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title><h2></h2>Text</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>This card contains the global text styles which can be used across the app</p>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <span class="mes-text-sm">Text Small</span>
+                </ion-col>
+                <ion-col>
+                  <code>mes-text-sm</code>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span class="mes-text-md">Medium Small</span>
+                </ion-col>
+                <ion-col>
+                  <code>mes-text-md</code>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
