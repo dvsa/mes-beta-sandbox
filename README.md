@@ -13,3 +13,7 @@ Ionic App which demostrates the lazy loading approach we will take on the projec
 ## Microservice Prototype
 
 AWS Lambda code trialling technologies and approaches to take on the project.
+
+## State Management
+
+Using NGRX/Store in order manage the state in the application.
