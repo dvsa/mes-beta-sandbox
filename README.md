@@ -17,3 +17,7 @@ AWS Lambda code trialling technologies and approaches to take on the project.
 ## State Management
 
 Using NGRX/Store in order manage the state in the application.
+
+## Stylelint
+
+Ionic App with stylelint installed and configured
