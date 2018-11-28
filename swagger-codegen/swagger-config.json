@@ -1,0 +1,10 @@
+{
+  "sortParamsByRequiredFlag": true,
+  "ensureUniqueParams": true,
+  "allowUnicodeIdentifiers" : false,
+  "modelPropertyNaming" : "camelCase",
+  "supportsES6": false,
+  "snapshot" : false,
+  "withInterfaces": false,
+  "ngVersion" : 4.3
+}

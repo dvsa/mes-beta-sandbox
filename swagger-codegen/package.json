@@ -9,7 +9,7 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
-    "swagger-codegen": "swagger-codegen generate -i http://petstore.swagger.io/v2/swagger.json -l typescript-angular -o ./src/api"
+    "swagger-codegen": "swagger-codegen generate -i http://petstore.swagger.io/v2/swagger.json -l typescript-angular -o ./src/api -c swagger-config.json"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
