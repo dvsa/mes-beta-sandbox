@@ -1,25 +1,25 @@
-import { RootState } from './../../app/app.state.reducer';
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-import { getLoggedInState } from '../../app/app.state.selector';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-interface HomePageState {
-  loggedIn$: Observable<string>;
-}
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
-  homePageState: HomePageState;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
 
-  constructor(store: Store<{ rootState: RootState }>) {
-    this.homePageState = {
-      loggedIn$: store.select(getLoggedInState)
-    }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
   }
 
 }

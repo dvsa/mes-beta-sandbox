@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SharedComponent } from './shared-component/shared-component';
+import { MessagesComponent } from './messages/messages';
+
 @NgModule({
-	declarations: [SharedComponent],
+	declarations: [ MessagesComponent ],
 	imports: [],
-	exports: [SharedComponent]
+	exports: [ MessagesComponent ]
 })
 export class ComponentsModule {}
