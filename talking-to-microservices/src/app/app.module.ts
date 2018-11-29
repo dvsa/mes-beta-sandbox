@@ -13,6 +13,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { MainEffects } from '../effects/effects';
+import { reducer } from '../store/reducer';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,12 @@ import { MainEffects } from '../effects/effects';
     HomePage
   ],
   imports: [
+    ComponentsModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([ MainEffects ]),
+    StoreModule.forRoot({ main: reducer}),
     StoreDevtoolsModule.instrument(),
-    ComponentsModule
+    EffectsModule.forRoot([ MainEffects ]),
   ],
   bootstrap: [ IonicApp ],
   entryComponents: [
