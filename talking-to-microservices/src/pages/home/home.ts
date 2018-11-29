@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
+import { Store } from '@ngrx/store';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LoadJournal } from '../../store/journal.actions';
+import { AddMessage } from '../../store/messages.actions'
 
 @IonicPage()
 @Component({
@@ -14,12 +11,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
+  isJournalLoading: boolean = false
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private store: Store<{ isLoading: boolean}>) {
+    store.select(state => state.isLoading).subscribe(isLoading => this.isJournalLoading = isLoading);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+  loadJournal() {
+    this.store.dispatch(new AddMessage({ text: 'Loading Journal...' }))
+    this.store.dispatch(new LoadJournal());
   }
 
 }

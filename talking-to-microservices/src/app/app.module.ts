@@ -6,14 +6,18 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ComponentsModule } from '../components/components.module';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
-import { MainEffects } from '../effects/effects';
-import { reducer } from '../store/reducer';
+import { JournalEffects } from '../effects/journal.effects';
+import { JournalProvider } from '../providers/journal/journal';
+
+import { journalReducer } from '../store/journal.reducer';
+import { messagesReducer } from '../store/messages.reducer';
 
 @NgModule({
   declarations: [
@@ -21,12 +25,16 @@ import { reducer } from '../store/reducer';
     HomePage
   ],
   imports: [
-    ComponentsModule,
     BrowserModule,
+    ComponentsModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
-    StoreModule.forRoot({ main: reducer}),
+    StoreModule.forRoot({ 
+      journal: journalReducer,
+      messages: messagesReducer
+    }),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([ MainEffects ]),
+    EffectsModule.forRoot([ JournalEffects ]),
   ],
   bootstrap: [ IonicApp ],
   entryComponents: [
@@ -36,7 +44,8 @@ import { reducer } from '../store/reducer';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    JournalProvider
   ]
 })
 export class AppModule {}

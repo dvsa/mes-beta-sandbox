@@ -1,4 +1,6 @@
 
 <div>
-  {{text}}
+  <div *ngFor="let message of messages">
+    {{message.text}}
+  </div>
 </div>
