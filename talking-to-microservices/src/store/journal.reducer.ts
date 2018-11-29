@@ -10,7 +10,15 @@ export function journalReducer(state = initialState, action: jorunalActions.Type
     case jorunalActions.LOAD_JOURNAL:
       return {
         ...state,
+      };
+    case jorunalActions.LOAD_JOURNAL_WITH_DELAY:
+      return {
+        ...state,
         isLoading: true,
+      };
+    case jorunalActions.LOAD_JOURNAL_WITH_CHANCE_TO_FAIL:
+      return {
+        ...state,
       };
     case jorunalActions.LOAD_JOURNAL_SUCCESS:
       return {

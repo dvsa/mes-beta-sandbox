@@ -9,5 +9,11 @@
 
 <ion-content padding>
   <button ion-button (click)="loadJournal()">Load Journal</button>
+  <button ion-button (click)="loadJournalWithDelay()">
+    <span *ngIf="!isJournalLoading">With Delay</span>
+    <span *ngIf="isJournalLoading"><ion-spinner name="bubbles"></ion-spinner></span>
+  </button>
+  <button ion-button (click)="loadJournalWithChanceToFail()">With Chance to Fail</button>
+  
   <messages></messages>
 </ion-content>
