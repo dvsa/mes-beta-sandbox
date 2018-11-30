@@ -11,9 +11,11 @@ import * as journalActions from '../../store/journal.actions';
 })
 export class HomePage {
   isJournalLoading: boolean = false
+  testSlots = {}
 
-  constructor(private store: Store<{ journal: { isLoading: boolean } }>) {
+  constructor(private store: Store<{ journal: { isLoading: boolean, testSlots } }>) {
     store.select(state => state.journal).subscribe(journal => this.isJournalLoading = journal.isLoading);
+    store.select(state => state.journal.testSlots).subscribe(testSlots => this.testSlots = testSlots);
   }
 
   loadJournal() {

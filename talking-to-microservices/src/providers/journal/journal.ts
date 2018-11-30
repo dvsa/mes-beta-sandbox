@@ -1,20 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { shouldFail } from '../utils';
+
 const url = 'https://jmje3h78ng.execute-api.eu-west-1.amazonaws.com/seb-poc/journal';
-
-function getRandomInt(max: number): number {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
-function shouldFail(): boolean {
-  const randomNumber = getRandomInt(2);
-  return randomNumber === 1;
-}
 
 @Injectable()
 export class JournalProvider {
-
   constructor(public http: HttpClient) {}
 
   getJournal() {
@@ -32,4 +24,9 @@ export class JournalProvider {
     return response;
   }
 
+  extractJournalData(data) {
+    const journalData = data.body.data.data.testSlots;
+    console.log(journalData);
+    return journalData;
+  }
 }

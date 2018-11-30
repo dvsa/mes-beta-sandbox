@@ -18,31 +18,46 @@ export class JournalEffects {
   @Effect()
   loadJournalStarts$ = this.actions$.pipe(
     ofType(journalActions.LOAD_JOURNAL),
-    mapTo(new messagesActions.AddMessage({ text: 'Loading Journal...' }))
+    mapTo(new messagesActions.AddMessage({
+      text: 'Loading Journal...',
+      time: Date.now()
+    }))
   )
 
   @Effect()
   loadJournalWithDelayStarts$ = this.actions$.pipe(
     ofType(journalActions.LOAD_JOURNAL_WITH_DELAY),
-    mapTo(new messagesActions.AddMessage({ text: 'Loading Journal...' }))
+    mapTo(new messagesActions.AddMessage({
+      text: 'Loading Journal...',
+      time: Date.now()
+    }))
   )
 
   @Effect()
   loadJournalWithChanceToFailStarts$ = this.actions$.pipe(
     ofType(journalActions.LOAD_JOURNAL_WITH_CHANCE_TO_FAIL),
-    mapTo(new messagesActions.AddMessage({ text: 'Loading Journal...' }))
+    mapTo(new messagesActions.AddMessage({
+      text: 'Loading Journal...',
+      time: Date.now()
+    }))
   )
 
   @Effect()
   journalLoadedSuccessfully$ = this.actions$.pipe(
     ofType(journalActions.LOAD_JOURNAL_SUCCESS),
-    mapTo(new messagesActions.AddMessage({ text: 'Journal loaded successfully' }))
+    mapTo(new messagesActions.AddMessage({
+      text: 'Journal loaded successfully',
+      time: Date.now()
+    }))
   )
   
   @Effect()
   journalLoadedUnsuccessfully$ = this.actions$.pipe(
     ofType(journalActions.LOAD_JOURNAL_FAILURE),
-    mapTo(new messagesActions.AddMessage({ text: 'Journal failed to load' }))
+    mapTo(new messagesActions.AddMessage({
+      text: 'Journal failed to load',
+      time: Date.now()
+    }))
   )
 
   @Effect()
@@ -52,7 +67,8 @@ export class JournalEffects {
       return this.journalProvider
         .getJournal()
         .pipe(
-          map(data => new journalActions.LoadJournalSuccess(data)),
+          map(data => this.journalProvider.extractJournalData(data)),
+          map(testSlots => new journalActions.LoadJournalSuccess(testSlots)),
           catchError(err => of(new journalActions.LoadJournalFailure(err)))
         )
     })

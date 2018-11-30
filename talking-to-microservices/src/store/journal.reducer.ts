@@ -24,7 +24,7 @@ export function journalReducer(state = initialState, action: jorunalActions.Type
       return {
         ...state,
         isLoading: false,
-        journalData: action.payload,
+        testSlots: action.payload,
       };
     case jorunalActions.LOAD_JOURNAL_FAILURE:
       return {
