@@ -1,4 +1,7 @@
-<!-- Generated template for the TestSlotsComponent component -->
 <div>
-  {{text}}
+  <button *ngIf="hasSlots()" ion-button color="danger" (click)="clearSlots()">Clear</button>
+
+  <div *ngFor="let slot of slots">
+    Slot Id: {{slot.slot._slotId}} Starting time: {{slot.slot.start}}
+  </div>
 </div>

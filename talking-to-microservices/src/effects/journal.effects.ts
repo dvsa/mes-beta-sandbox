@@ -82,6 +82,7 @@ export class JournalEffects {
         .getJournal()
         .pipe(
           delay(3000),
+          map(data => this.journalProvider.extractJournalData(data)),
           map(data => new journalActions.LoadJournalSuccess(data)),
           catchError(err => of(new journalActions.LoadJournalFailure(err)))
         )
@@ -95,6 +96,7 @@ export class JournalEffects {
       return this.journalProvider
         .getJournalWithChanceToFail()
         .pipe(
+          map(data => this.journalProvider.extractJournalData(data)),
           map(data => new journalActions.LoadJournalSuccess(data)),
           catchError(err => of(new journalActions.LoadJournalFailure(err)))
         )

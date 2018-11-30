@@ -3,6 +3,7 @@ import { IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 
 import * as journalActions from '../../store/journal.actions';
+import * as testSlotsActions from '../../store/test-slots.actions';
 
 @IonicPage()
 @Component({
@@ -16,6 +17,8 @@ export class HomePage {
   constructor(private store: Store<{ journal: { isLoading: boolean, testSlots } }>) {
     store.select(state => state.journal).subscribe(journal => this.isJournalLoading = journal.isLoading);
     store.select(state => state.journal.testSlots).subscribe(testSlots => this.testSlots = testSlots);
+
+    this.clearSlots = this.clearSlots.bind(this);
   }
 
   loadJournal() {
@@ -28,6 +31,10 @@ export class HomePage {
 
   loadJournalWithChanceToFail() {
     this.store.dispatch(new journalActions.LoadJournalWithChanceToFail());
+  }
+
+  clearSlots() {
+    this.store.dispatch(new testSlotsActions.ClearTestSlots());
   }
 
 }

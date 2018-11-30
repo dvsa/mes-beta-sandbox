@@ -26,7 +26,6 @@ export class JournalProvider {
 
   extractJournalData(data) {
     const journalData = data.body.data.data.testSlots;
-    console.log(journalData);
     return journalData;
   }
 }
