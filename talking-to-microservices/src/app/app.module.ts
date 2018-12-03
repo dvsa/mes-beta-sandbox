@@ -14,7 +14,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { JournalEffects } from '../effects/journal.effects';
-import { JournalProvider } from '../providers/journal/journal';
+import { JournalService } from '../providers/journal/journal.service';
 
 import { journalReducer } from '../store/journal.reducer';
 import { messagesReducer } from '../store/messages.reducer';
@@ -45,7 +45,7 @@ import { messagesReducer } from '../store/messages.reducer';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    JournalProvider
+    JournalService
   ]
 })
 export class AppModule {}

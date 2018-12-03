@@ -6,14 +6,14 @@ import { of } from 'rxjs/observable/of';
 
 import * as journalActions from '../store/journal.actions';
 import * as messagesActions from '../store/messages.actions';
-import { JournalProvider } from '../providers/journal/journal';
+import { JournalService } from '../providers/journal/journal.service';
 
 @Injectable()
 export class JournalEffects {
 
   constructor(
     private actions$: Actions,
-    private journalProvider: JournalProvider) {}
+    private journalService: JournalService) {}
 
   @Effect()
   loadJournalStarts$ = this.actions$.pipe(
@@ -64,10 +64,10 @@ export class JournalEffects {
   journal$ = this.actions$.pipe(
     ofType(journalActions.LOAD_JOURNAL),
     switchMap(() => {
-      return this.journalProvider
+      return this.journalService
         .getJournal()
         .pipe(
-          map(data => this.journalProvider.extractJournalData(data)),
+          map(data => this.journalService.extractJournalData(data)),
           map(testSlots => new journalActions.LoadJournalSuccess(testSlots)),
           catchError(err => of(new journalActions.LoadJournalFailure(err)))
         )
@@ -78,11 +78,11 @@ export class JournalEffects {
   delayedJournal$ = this.actions$.pipe(
     ofType(journalActions.LOAD_JOURNAL_WITH_DELAY),
     switchMap(() => {
-      return this.journalProvider
+      return this.journalService
         .getJournal()
         .pipe(
           delay(3000),
-          map(data => this.journalProvider.extractJournalData(data)),
+          map(data => this.journalService.extractJournalData(data)),
           map(data => new journalActions.LoadJournalSuccess(data)),
           catchError(err => of(new journalActions.LoadJournalFailure(err)))
         )
@@ -93,10 +93,10 @@ export class JournalEffects {
   possiblyFailedJournal$ = this.actions$.pipe(
     ofType(journalActions.LOAD_JOURNAL_WITH_CHANCE_TO_FAIL),
     switchMap(() => {
-      return this.journalProvider
+      return this.journalService
         .getJournalWithChanceToFail()
         .pipe(
-          map(data => this.journalProvider.extractJournalData(data)),
+          map(data => this.journalService.extractJournalData(data)),
           map(data => new journalActions.LoadJournalSuccess(data)),
           catchError(err => of(new journalActions.LoadJournalFailure(err)))
         )

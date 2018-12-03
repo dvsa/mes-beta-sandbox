@@ -36,8 +36,10 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.2.1",
+    "jasmine-marbles": "^0.2.0",
     "jest": "^23.6.0",
     "jest-preset-angular": "^6.0.1",
+    "rxjs-marbles": "^4.3.5",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project"

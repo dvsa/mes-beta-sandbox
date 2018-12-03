@@ -6,7 +6,7 @@ import { shouldFail } from '../utils';
 const url = 'https://jmje3h78ng.execute-api.eu-west-1.amazonaws.com/seb-poc/journal';
 
 @Injectable()
-export class JournalProvider {
+export class JournalService {
   constructor(public http: HttpClient) {}
 
   getJournal() {
