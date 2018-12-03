@@ -1,12 +1,12 @@
-
 import * as jorunalActions from '../store/journal.actions';
-import * as testSlotsActions from '../store/test-slots.actions';
 
 const initialState = {
   isLoading: false,
+  testSlots: [],
+  error: {},
 };
 
-export function journalReducer(state = initialState, action: jorunalActions.Types | testSlotsActions.Types) {
+export function journalReducer(state = initialState, action: jorunalActions.Types) {
   switch (action.type) {
     case jorunalActions.LOAD_JOURNAL:
       return {
@@ -34,7 +34,7 @@ export function journalReducer(state = initialState, action: jorunalActions.Type
         error: action.payload,
       };
 
-    case testSlotsActions.CLEAR_TEST_SLOTS:
+    case jorunalActions.CLEAR_TEST_SLOTS:
       return {
         ...state,
         testSlots: [],

@@ -1,4 +1,3 @@
-
 import { Action } from "@ngrx/store";
 
 export const LOAD_JOURNAL = '[Main] Load Journal';
@@ -29,9 +28,22 @@ export class LoadJournalFailure implements Action {
   constructor(public payload) {}
 }
 
+export const CLEAR_TEST_SLOTS = '[Journal] Clear test slots';
+export const CLEAR_ERROR = '[Journal] Clear error';
+
+export class ClearTestSlots implements Action {
+  readonly type = CLEAR_TEST_SLOTS
+}
+
+export class ClearError implements Action {
+  readonly type = CLEAR_ERROR
+}
+
 export type Types = 
   | LoadJournal
   | LoadJournalWithDelay
   | LoadJournalWithChanceToFail
   | LoadJournalSuccess
-  | LoadJournalFailure;
+  | LoadJournalFailure
+  | ClearTestSlots
+  | ClearError;

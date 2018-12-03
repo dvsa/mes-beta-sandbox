@@ -16,4 +16,8 @@ export class MessagesComponent {
     store.select(state => state.messages).subscribe(messages => this.messages = messages.msgs);
   }
 
+  hasMessages() {
+    return this.messages !== undefined && this.messages.length > 0;
+  }
+
 }

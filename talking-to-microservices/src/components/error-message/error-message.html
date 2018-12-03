@@ -1,0 +1,9 @@
+<ion-card *ngIf="hasErrorText()">
+  <ion-card-header>Error Message</ion-card-header>
+  <ion-card-content>
+    <button ion-button color="danger" (click)="clearErrorText()">Clear Error</button>
+    <div class="error-text-container">
+      <span class="error-text">{{text}}</span>
+    </div>
+  </ion-card-content>
+</ion-card>

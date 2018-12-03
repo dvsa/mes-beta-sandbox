@@ -1,6 +1,8 @@
-
-<div>
-  <div *ngFor="let message of messages">
-    {{message.text}}
-  </div>
-</div>
+<ion-card *ngIf="hasMessages()">
+  <ion-card-header>Logs</ion-card-header>
+  <ion-card-content>
+    <div *ngFor="let message of messages">
+      {{message.text}}
+    </div>
+  </ion-card-content>
+</ion-card>

@@ -3,15 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicModule } from 'ionic-angular';
 import { MessagesComponent } from './messages/messages';
 import { TestSlotsComponent } from './test-slots/test-slots';
+import { ErrorMessageComponent } from './error-message/error-message';
 
 @NgModule({
 	declarations: [ MessagesComponent,
-    TestSlotsComponent ],
+    TestSlotsComponent,
+    ErrorMessageComponent ],
 	imports: [
 		BrowserModule,
 		IonicModule
 	],
 	exports: [ MessagesComponent,
-    TestSlotsComponent ]
+    TestSlotsComponent,
+    ErrorMessageComponent ]
 })
 export class ComponentsModule {}
