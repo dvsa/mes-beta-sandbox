@@ -39,6 +39,13 @@ export function journalReducer(state = initialState, action: jorunalActions.Type
         ...state,
         testSlots: [],
       }
+
+    case jorunalActions.CLEAR_ERROR:
+      return {
+        ...state,
+        error: {},
+      }
+    
     default: 
       return state;
   }
