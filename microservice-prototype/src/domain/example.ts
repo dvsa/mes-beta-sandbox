@@ -1,6 +1,6 @@
 export class Example {
 
     exampleBusinessLogic(a: number): string {
-        return "This is example service...";
+        return "This is example business logic...";
     }
 }

@@ -1,10 +1,14 @@
-import { ExampleService } from './example-service';
+import { exampleOperation } from './example-service';
+import { Example } from '../domain/example';
+
+const exampleRepository = require.requireActual('../framework/dynamo-example-repository');
 
 describe('exampleOperation', () => {
     it('returns simple response', () => {
-        // until we have DI this isn't a unit test, it is invoking the real service
-        // todo: inject a mock repository
-        const service: ExampleService = new ExampleService();
-        expect(service.exampleOperation(42)).toEqual('This is example service...');
+        exampleRepository.exampleOperation = jest.fn().mockReturnValue(new Example());
+
+        // TODO: mock the Example.exampleBusinessLogic function
+
+        expect(exampleOperation(42)).toEqual('This is example business logic...');
     });
 });
