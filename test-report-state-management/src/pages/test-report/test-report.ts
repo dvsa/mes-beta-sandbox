@@ -10,18 +10,7 @@ import {
   AddDangerousFault,
 } from '../../store/test-report.actions';
 
-interface Fault {
-  driving: number
-  serious: number
-  dangerous: number
-}
-
-interface Faults {
-  pickedFaultType: FaultType
-  judgement: {
-    overtaking: Fault
-  }
-}
+import * as candidateInfoActions from '../../store/candidate-info.actions';
 
 @Component({
   selector: 'page-test-report',
@@ -33,6 +22,7 @@ export class TestReport {
 
   constructor(private store: Store<any>) {
     store.select(state => state.testReport).subscribe(data => this.testReport = data);
+    store.dispatch(new candidateInfoActions.LoadCandidateInfo());
   }
 
   pickDrivingFaultType() {
@@ -56,6 +46,7 @@ export class TestReport {
       category: testActivityCategory,
       activity: testActivity
     }
+    
     if (this.testReport.pickedFaultType === FaultType.driving) {
       this.store.dispatch(new AddDrivingFault(payload));
       return;

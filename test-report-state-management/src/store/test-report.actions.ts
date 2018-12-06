@@ -1,4 +1,3 @@
-
 import { Action } from '@ngrx/store';
 import { FaultType } from '../models/fault-type';
 import { TestActivityReference } from '../models/test-activity-reference';

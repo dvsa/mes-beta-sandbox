@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Talking to microservices</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <test-slots [slots]="testSlots" [clearSlots]="clearSlots"></test-slots>
+  <error-message [text]="errorText" [clearErrorText]="clearError"></error-message>
+
+  <ion-card>
+    <ion-card-header>Actions</ion-card-header>
+    <ion-card-content>
+      <button ion-button (click)="loadJournal()">Load Journal</button>
+      <button ion-button (click)="loadJournalWithDelay()">
+        <span *ngIf="!isJournalLoading">With Delay</span>
+        <span *ngIf="isJournalLoading"><ion-spinner name="bubbles"></ion-spinner></span>
+      </button>
+      <button ion-button (click)="loadJournalWithChanceToFail()">With Chance to Fail</button>
+    </ion-card-content>
+  </ion-card>
+  
+  <messages></messages>
+</ion-content>

@@ -1,0 +1,9 @@
+<ion-card *ngIf="hasSlots()">
+  <ion-card-header>Test Slots</ion-card-header>
+  <ion-card-content>
+    <button ion-button color="danger" (click)="clearSlots()">Clear</button>
+    <div *ngFor="let slot of slots">
+      Slot Id: {{slot.slot._slotId}} Starting time: {{slot.slot.start}}
+    </div>
+  </ion-card-content>
+</ion-card>
