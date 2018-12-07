@@ -24,6 +24,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.login();
     });
   }
 
@@ -43,20 +44,22 @@ export class MyApp {
 
     // Attempt to authorize the user silently
     authContext.acquireTokenSilentAsync(adalConfig.resourceUrl, adalConfig.clientId, '')
-      .then(this.successfullAuthentication, function () {
+      .then(this.successfulAuthentication, function() {
         // Silent login failed
         // We require user credentials, so this triggers the authentication dialog box
         // this login will prompt the user using the UI
         return authContext.acquireTokenAsync(adalConfig.resourceUrl, adalConfig.clientId,  adalConfig.redirectUrl,'','')
-        .then(this.successfullAuthentication, this.failedAuthentication);
+        .then(this.successfulAuthentication, this.failedAuthentication);
       }).catch((e: any) => e);
   }
 
-  successfullAuthentication(authResponse) {
+  successfulAuthentication(authResponse) {
+    console.log(`successfulAuthentication: ${authResponse}`);
     this.authToken = authResponse.accessToken;
   }
 
   failedAuthentication(err) {
+    console.log(`failedAuthentication: ${err}`);
   }
 }
 
