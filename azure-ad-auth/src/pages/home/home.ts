@@ -12,6 +12,7 @@ export class HomePage {
   authToken: any;
   output: string = '';
   logs: string[] = [];
+  showLogin: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -24,7 +25,7 @@ export class HomePage {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.logs.push(`platform is ios: ${this.platform.is('ios')}`);
-    if (this.platform.is('ios')) this.login();
+    if (this.platform.is('ios')) this.showLogin = true;
   }
 
   getAuthConfig() {
@@ -42,16 +43,17 @@ export class HomePage {
     this.logs.push(`context: ${context}, resourceUrl: ${resourceUrl}, clientId: ${clientId}, redirectUrl: ${redirectUrl}`);
     const authContext: AuthenticationContext = this.msAdal.createAuthenticationContext(context);
     this.logs.push('authContext created');
+    this.logs.push(typeof authContext.acquireTokenAsync);
     // Attempt to authorize the user silently
-    authContext.acquireTokenSilentAsync(resourceUrl, clientId)
+    authContext.acquireTokenSilentAsync(resourceUrl, clientId, '')
       .then(this.successfulAuthentication)
       .catch((e: any) => {
-        this.logs.push('acquireTokenSilentAsync didn\'t work');
+        this.logs.push(`acquireTokenSilentAsync didn\'t work: ${e}`);
         // Silent login failed
         // We require user credentials, so this triggers the authentication dialog box
         // this login will prompt the user using the UI
         this.logs.push('running acquireTokenAsync');
-        authContext.acquireTokenAsync(resourceUrl, clientId, redirectUrl)
+        authContext.acquireTokenAsync(resourceUrl, clientId, redirectUrl, '', '')
           .then(this.successfulAuthentication)
           .catch(this.failedAuthentication);
       });

@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content padding>
+  <button ion-button *ngIf="showLogin" (click)="login()">Log in</button>
   <p>
     {{output}}
   </p>
