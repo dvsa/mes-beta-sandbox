@@ -29,10 +29,10 @@ export class MyApp {
 
   getAuthConfig() {
     return {
-      context: '',
-      resourceUrl: '',
-      clientId: '',
-      redirectUrl: ''
+      context: 'https://login.microsoftonline.com/common',
+      resourceUrl: 'https://graph.windows.net',
+      clientId: '09fdd68c-4f2f-45c2-be55-dd98104d4f74',
+      redirectUrl: 'x-ms-auth-uk-gov-dvsa-mobile-examiner://uk.gov.dvsa.mobile-examiner'
     }
   }
 
