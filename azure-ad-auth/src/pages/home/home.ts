@@ -29,7 +29,7 @@ export class HomePage {
 
   getAuthConfig() {
     return {
-      context: 'https://login.microsoftonline.net/common',
+      context: 'https://login.windows.net/common',
       resourceUrl: 'https://graph.windows.net',
       clientId: '09fdd68c-4f2f-45c2-be55-dd98104d4f74',
       redirectUrl: 'x-msauth-io-ionic-starter-ammar://io.ionic.starter.ammar'
