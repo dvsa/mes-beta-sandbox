@@ -59,6 +59,13 @@ export class HomePage {
       });
   }
 
+  logout = () => {
+    const { context, resourceUrl, clientId, redirectUrl } = this.getAuthConfig();
+    const authContext: AuthenticationContext = this.msAdal.createAuthenticationContext(context);
+    this.logs.push('Logging out, clearing tokenCache');
+    authContext.tokenCache.clear();
+  }
+
   successfulAuthentication = (authResponse: AuthenticationResult) => {
     this.logs.push('successfulAuthentication');
     this.alertCtrl.create({
