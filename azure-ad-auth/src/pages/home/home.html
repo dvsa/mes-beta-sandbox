@@ -12,7 +12,12 @@
   <p>
     {{output}}
   </p>
+  <h2>Logs</h2>
   <p *ngFor="let log of logs">
     {{log}}
+  </p>
+  <h2>User info</h2>
+  <p *ngFor="let key of userInfoKeys">
+    {{key}}
   </p>
 </ion-content>

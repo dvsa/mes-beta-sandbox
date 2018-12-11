@@ -13,6 +13,7 @@ export class HomePage {
   output: string = '';
   logs: string[] = [];
   showLogin: boolean = false;
+  userInfoKeys: string[] = [];
 
   constructor(
     public navCtrl: NavController,
@@ -67,7 +68,13 @@ export class HomePage {
   }
 
   successfulAuthentication = (authResponse: AuthenticationResult) => {
+    const { userInfo } = authResponse;
     this.logs.push('successfulAuthentication');
+    for (let key in userInfo) {
+      if (userInfo.hasOwnProperty(key)) {
+        this.userInfoKeys.push(userInfo[key]);
+      }
+    }
     this.alertCtrl.create({
       title: 'Successful Azure AD auth',
       subTitle: authResponse.accessToken,
