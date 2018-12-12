@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Platform, AlertController } from 'ionic-angular';
 import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-native/ms-adal';
+import AWS from 'aws-sdk';
 
 @Component({
   selector: 'page-home',
@@ -10,10 +11,13 @@ import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-nati
 export class HomePage {
 
   authToken: any;
+  idToken: any;
   output: string = '';
   logs: string[] = [];
   showLogin: boolean = false;
   userInfoKeys: string[] = [];
+  awsOutput: string[] = [];
+  cognitoPoolId: string = 'eu-west-1:e799f41a-4756-4bc9-a2b4-3628ddf33a88';
 
   constructor(
     public navCtrl: NavController,
@@ -34,7 +38,7 @@ export class HomePage {
       context: 'https://login.windows.net/common',
       resourceUrl: 'https://graph.windows.net',
       clientId: '09fdd68c-4f2f-45c2-be55-dd98104d4f74',
-      redirectUrl: 'x-msauth-io-ionic-starter-ammar://io.ionic.starter.ammar'
+      redirectUrl: 'x-msauth-uk-gov-dvsa-mobile-examiner-services://uk.gov.dvsa.mobile-examiner-services'
     }
   }
 
@@ -82,6 +86,9 @@ export class HomePage {
     }).present();
     this.output = `Successful Azure AD auth: ${authResponse.accessToken}`;
     this.authToken = authResponse.accessToken;
+    this.idToken = authResponse.idToken;
+    this.logs.push(`idToken: ${this.idToken}`);
+    this.testAWS();
   }
 
   failedAuthentication = (err) => {
@@ -92,6 +99,27 @@ export class HomePage {
       buttons: ['Dismiss']
     }).present();
     this.output = `Failed Azure AD auth: ${err}`;
+  }
+
+  testAWS = () => {
+    AWS.config.region = 'eu-west-1';
+    this.awsOutput.push(`cognito pool id: ${this.cognitoPoolId}`);
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: this.cognitoPoolId
+    });
+    AWS.config.getCredentials((err) => {
+      if (err) {
+        this.awsOutput.push(`Creds error: ${err}`);
+      } else {
+        const ec2 = new AWS.EC2();
+        const params = {}; // all the things
+        ec2.describeSecurityGroups(params, (_err, data) => {
+          if (_err) this.awsOutput.push(`EC2 error: ${_err}`);
+          else     this.awsOutput.push(`AWS response: ${data}`)
+                   this.awsOutput.push(JSON.stringify(data, null, 2));
+        });
+      }
+    });
   }
 
 }
