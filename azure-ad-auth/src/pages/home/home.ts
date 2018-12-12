@@ -10,7 +10,7 @@ import AWS from 'aws-sdk';
 })
 export class HomePage {
 
-  authToken: any;
+  accessToken: any;
   idToken: any;
   output: string = '';
   logs: string[] = [];
@@ -85,7 +85,7 @@ export class HomePage {
       buttons: ['Dismiss']
     }).present();
     this.output = `Successful Azure AD auth: ${authResponse.accessToken}`;
-    this.authToken = authResponse.accessToken;
+    this.accessToken = authResponse.accessToken;
     this.idToken = authResponse.idToken;
     this.logs.push(`idToken: ${this.idToken}`);
     this.testAWS();
@@ -104,10 +104,12 @@ export class HomePage {
   testAWS = () => {
     AWS.config.region = 'eu-west-1';
     this.awsOutput.push(`cognito pool id: ${this.cognitoPoolId}`);
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: this.cognitoPoolId
-    });
-    AWS.config.getCredentials((err) => {
+    new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: this.cognitoPoolId,
+      Logins: {
+        'login.microsoftonline.com': this.idToken
+      }
+    }).get((err) => {
       if (err) {
         this.awsOutput.push(`Creds error: ${err}`);
       } else {
@@ -119,7 +121,7 @@ export class HomePage {
                    this.awsOutput.push(JSON.stringify(data, null, 2));
         });
       }
-    });
+    })
   }
 
 }
