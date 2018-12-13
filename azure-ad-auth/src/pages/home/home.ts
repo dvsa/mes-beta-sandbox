@@ -4,6 +4,8 @@ import { Platform, AlertController } from 'ionic-angular';
 import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-native/ms-adal';
 import { HttpClient } from '@angular/common/http'
 import AWS from 'aws-sdk';
+import { Adal5Service } from 'adal-angular5';
+import aws4 from 'aws4';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -14,27 +16,28 @@ export class HomePage {
   idToken: any;
   output: string = '';
   logs: string[] = [];
-  showLogin: boolean = false;
+  showLogin: boolean = true;
   userInfoKeys: string[] = [];
   awsOutput: string[] = [];
   cognitoPoolId: string = 'eu-west-1:f5a0346e-9bbb-4153-affd-bbe59cd5b7a3';
+  signature: any;
 
   constructor(
     public navCtrl: NavController,
     private platform: Platform,
     private msAdal: MSAdal,
     private alertCtrl: AlertController,
-    private http: HttpClient
+    private http: HttpClient,
+    private adal5Service: Adal5Service
   ) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.logs.push(`platform is ios: ${this.platform.is('ios')}`);
-    if (this.platform.is('ios')) this.showLogin = true;
   }
 
-  getAuthConfig() {
+  getNativeAuthConfig() {
     return {
       context: 'https://login.windows.net/common',
       resourceUrl: 'https://graph.windows.net',
@@ -43,9 +46,34 @@ export class HomePage {
     }
   }
 
-  login = () => {
+  getWebAuthConfig() {
+    return {
+      clientId: '09fdd68c-4f2f-45c2-be55-dd98104d4f74',
+      tenant: '6c448d90-4ca1-4caf-ab59-0a2aa67d7801'
+    }
+  }
+
+  webLogin() {
+
+    this.adal5Service.init(this.getWebAuthConfig()); // Configure the ADAL Service
+    this.adal5Service.handleWindowCallback(); // Handle callback if this is a redirect from Azure
+
+    // Check if the user is authenticated. If not, call the login() method
+    if (!this.adal5Service.userInfo.authenticated) {
+      this.adal5Service.login();
+    }
+    console.log(`userInfo from web login: ${JSON.stringify(this.adal5Service.userInfo)}`);
+    this.idToken = this.adal5Service.userInfo.token;
+    this.testAWS();
+  }
+
+  login() {
+    this.platform.is('ios') ? this.nativeLogin() : this.webLogin(); 
+  }
+
+  nativeLogin = () => {
     this.logs.push(`logging in..`);
-    const { context, resourceUrl, clientId, redirectUrl } = this.getAuthConfig();
+    const { context, resourceUrl, clientId, redirectUrl } = this.getNativeAuthConfig();
     this.logs.push(`context: ${context}, resourceUrl: ${resourceUrl}, clientId: ${clientId}, redirectUrl: ${redirectUrl}`);
     const authContext: AuthenticationContext = this.msAdal.createAuthenticationContext(context);
     this.logs.push('authContext created');
@@ -66,7 +94,15 @@ export class HomePage {
   }
 
   logout = () => {
-    const { context } = this.getAuthConfig();
+    this.platform.is('ios') ? this.nativeLogout() : this.webLogout(); 
+  }
+
+  webLogout = () => {
+    this.adal5Service.logOut();
+  }
+
+  nativeLogout = () => {
+    const { context } = this.getNativeAuthConfig();
     const authContext: AuthenticationContext = this.msAdal.createAuthenticationContext(context);
     this.logs.push('Logging out, clearing tokenCache');
     authContext.tokenCache.clear();
@@ -108,12 +144,26 @@ export class HomePage {
   testTokenVerification = () => {
 
     this.awsOutput.push('starting http get');
-
-    this.http.get('https://jmje3h78ng.execute-api.eu-west-1.amazonaws.com/seb-poc/journal')
+    console.log('this.signature');
+    console.log(this.signature.request);
+    this.http.get('https://jmje3h78ng.execute-api.eu-west-1.amazonaws.com/seb-poc/journal', this.signature.request)
       .subscribe(
         res => this.awsOutput.push(`http response: ${JSON.stringify(res)}`),
         err => this.awsOutput.push(`http error: ${JSON.stringify(err)}`)
       );
+  }
+
+  getSigs(accessKeyId, secretAccessKey, sessionToken) {
+    const CREDS = { accessKeyId, secretAccessKey, sessionToken };
+
+    const signer = new aws4.RequestSigner({
+      service: 'execute-api',
+      host: 'jmje3h78ng.execute-api.eu-west-1.amazonaws.com',
+      path: '/seb-poc/journal',
+    }, CREDS);
+    console.log('signer');
+    console.log(JSON.stringify(signer));
+    this.signature = signer;
   }
 
   testAWS = () => {
@@ -127,12 +177,19 @@ export class HomePage {
     });
 
     AWS.config.credentials = credentials;
-    
+
     credentials.getPromise()
-      .then(data => this.awsOutput.push(JSON.stringify(data)))
+      .then(() => {
+        const { accessKeyId, secretAccessKey, sessionToken } = AWS.config.credentials;
+        console.log('get credentials success');
+        console.log(AWS.config.credentials);
+        this.awsOutput.push(`access_key: ${accessKeyId}`);
+        this.awsOutput.push(`secret: ${secretAccessKey}`);
+        this.getSigs(accessKeyId, secretAccessKey, sessionToken);
+        this.testTokenVerification();
+      })
       .catch(err => this.awsOutput.push(`Creds error: ${err}`));
 
-    this.testTokenVerification();
   }
 
 }

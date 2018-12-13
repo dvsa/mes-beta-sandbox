@@ -1,4 +1,5 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Adal5Service } from 'adal-angular5';
+import { HttpClientModule } from '@angular/common/http';
 import { MSAdal } from '@ionic-native/ms-adal';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ import { HomePage } from '../pages/home/home';
     StatusBar,
     SplashScreen,
     MSAdal,
+    Adal5Service,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
