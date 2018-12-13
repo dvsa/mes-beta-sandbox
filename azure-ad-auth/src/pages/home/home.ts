@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Platform, AlertController } from 'ionic-angular';
 import { MSAdal, AuthenticationContext, AuthenticationResult } from '@ionic-native/ms-adal';
+import { HttpClient } from '@angular/common/http'
 import AWS from 'aws-sdk';
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,13 +17,14 @@ export class HomePage {
   showLogin: boolean = false;
   userInfoKeys: string[] = [];
   awsOutput: string[] = [];
-  cognitoPoolId: string = 'eu-west-1:e799f41a-4756-4bc9-a2b4-3628ddf33a88';
+  cognitoPoolId: string = 'eu-west-1:f5a0346e-9bbb-4153-affd-bbe59cd5b7a3';
 
   constructor(
     public navCtrl: NavController,
     private platform: Platform,
     private msAdal: MSAdal,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -65,7 +66,7 @@ export class HomePage {
   }
 
   logout = () => {
-    const { context, resourceUrl, clientId, redirectUrl } = this.getAuthConfig();
+    const { context } = this.getAuthConfig();
     const authContext: AuthenticationContext = this.msAdal.createAuthenticationContext(context);
     this.logs.push('Logging out, clearing tokenCache');
     authContext.tokenCache.clear();
@@ -81,13 +82,16 @@ export class HomePage {
     }
     this.alertCtrl.create({
       title: 'Successful Azure AD auth',
-      subTitle: authResponse.accessToken,
       buttons: ['Dismiss']
     }).present();
     this.output = `Successful Azure AD auth: ${authResponse.accessToken}`;
     this.accessToken = authResponse.accessToken;
+    const splitAccessToken = this.accessToken.split('.')[1];
+    this.logs.push(`decoded accessToken: ${atob(splitAccessToken)}`);
     this.idToken = authResponse.idToken;
     this.logs.push(`idToken: ${this.idToken}`);
+    const splitIdToken = this.idToken.split('.')[1];
+    this.logs.push(`decoded idToken: ${atob(splitIdToken)}`);
     this.testAWS();
   }
 
@@ -101,27 +105,34 @@ export class HomePage {
     this.output = `Failed Azure AD auth: ${err}`;
   }
 
+  testTokenVerification = () => {
+
+    this.awsOutput.push('starting http get');
+
+    this.http.get('https://jmje3h78ng.execute-api.eu-west-1.amazonaws.com/seb-poc/journal')
+      .subscribe(
+        res => this.awsOutput.push(`http response: ${JSON.stringify(res)}`),
+        err => this.awsOutput.push(`http error: ${JSON.stringify(err)}`)
+      );
+  }
+
   testAWS = () => {
     AWS.config.region = 'eu-west-1';
     this.awsOutput.push(`cognito pool id: ${this.cognitoPoolId}`);
-    new AWS.CognitoIdentityCredentials({
+    const credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: this.cognitoPoolId,
       Logins: {
-        'login.microsoftonline.com': this.idToken
+        'sts.windows.net/6c448d90-4ca1-4caf-ab59-0a2aa67d7801': this.idToken
       }
-    }).get((err) => {
-      if (err) {
-        this.awsOutput.push(`Creds error: ${err}`);
-      } else {
-        const ec2 = new AWS.EC2();
-        const params = {}; // all the things
-        ec2.describeSecurityGroups(params, (_err, data) => {
-          if (_err) this.awsOutput.push(`EC2 error: ${_err}`);
-          else     this.awsOutput.push(`AWS response: ${data}`)
-                   this.awsOutput.push(JSON.stringify(data, null, 2));
-        });
-      }
-    })
+    });
+
+    AWS.config.credentials = credentials;
+    
+    credentials.getPromise()
+      .then(data => this.awsOutput.push(JSON.stringify(data)))
+      .catch(err => this.awsOutput.push(`Creds error: ${err}`));
+
+    this.testTokenVerification();
   }
 
 }
