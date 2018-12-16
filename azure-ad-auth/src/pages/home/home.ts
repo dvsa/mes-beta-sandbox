@@ -145,8 +145,8 @@ export class HomePage {
 
     this.awsOutput.push('starting http get');
     console.log('this.signature');
-    console.log(this.signature.request);
-    this.http.get('https://jmje3h78ng.execute-api.eu-west-1.amazonaws.com/seb-poc/journal', this.signature.request)
+    console.log(this.signature);
+    this.http.get('https://jmje3h78ng.execute-api.eu-west-1.amazonaws.com/seb-poc/journal', this.signature)
       .subscribe(
         res => this.awsOutput.push(`http response: ${JSON.stringify(res)}`),
         err => this.awsOutput.push(`http error: ${JSON.stringify(err)}`)
@@ -156,14 +156,17 @@ export class HomePage {
   getSigs(accessKeyId, secretAccessKey, sessionToken) {
     const CREDS = { accessKeyId, secretAccessKey, sessionToken };
 
-    const signer = new aws4.RequestSigner({
-      service: 'execute-api',
+    const options = {
+      // service: 'execute-api',
       host: 'jmje3h78ng.execute-api.eu-west-1.amazonaws.com',
       path: '/seb-poc/journal',
-    }, CREDS);
+      region: 'eu-west-1'
+    }
+
+    const signer = aws4.sign(options, CREDS);
     console.log('signer');
     console.log(JSON.stringify(signer));
-    this.signature = signer;
+    this.signature = options;
   }
 
   testAWS = () => {
