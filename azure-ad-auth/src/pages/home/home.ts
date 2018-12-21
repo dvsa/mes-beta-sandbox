@@ -41,7 +41,7 @@ export class HomePage {
   getNativeAuthConfig() {
     return {
       context: 'https://login.windows.net/common',
-      resourceUrl: 'https://graph.microsoft.com',
+      resourceUrl: '5cc3585a-bddc-45db-a58d-ada2ea6c4875',
       clientId: '5cc3585a-bddc-45db-a58d-ada2ea6c4875',
       redirectUrl: 'x-msauth-uk-gov-dvsa-mobile-examiner-services://uk.gov.dvsa.mobile-examiner-services'
     }
