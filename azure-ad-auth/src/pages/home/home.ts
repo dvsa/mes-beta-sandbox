@@ -21,6 +21,7 @@ export class HomePage {
   awsOutput: string[] = [];
   cognitoPoolId: string = 'eu-west-1:f5a0346e-9bbb-4153-affd-bbe59cd5b7a3';
   signature: any;
+  authToken: any;
 
   constructor(
     public navCtrl: NavController,
@@ -40,15 +41,15 @@ export class HomePage {
   getNativeAuthConfig() {
     return {
       context: 'https://login.windows.net/common',
-      resourceUrl: 'https://graph.windows.net',
-      clientId: '09fdd68c-4f2f-45c2-be55-dd98104d4f74',
+      resourceUrl: 'https://graph.microsoft.com',
+      clientId: '5cc3585a-bddc-45db-a58d-ada2ea6c4875',
       redirectUrl: 'x-msauth-uk-gov-dvsa-mobile-examiner-services://uk.gov.dvsa.mobile-examiner-services'
     }
   }
 
   getWebAuthConfig() {
     return {
-      clientId: '09fdd68c-4f2f-45c2-be55-dd98104d4f74',
+      clientId: '5cc3585a-bddc-45db-a58d-ada2ea6c4875',
       tenant: '6c448d90-4ca1-4caf-ab59-0a2aa67d7801'
     }
   }
@@ -63,7 +64,7 @@ export class HomePage {
       this.adal5Service.login();
     }
     console.log(`userInfo from web login: ${JSON.stringify(this.adal5Service.userInfo)}`);
-    this.idToken = this.adal5Service.userInfo.token;
+    this.authToken = this.adal5Service.userInfo.token;
     this.testAWS();
   }
 
@@ -120,11 +121,13 @@ export class HomePage {
       title: 'Successful Azure AD auth',
       buttons: ['Dismiss']
     }).present();
-    this.output = `Successful Azure AD auth: ${authResponse.accessToken}`;
+    this.output = `Successful Azure AD auth token: ${authResponse.accessToken}`;
     this.accessToken = authResponse.accessToken;
     const splitAccessToken = this.accessToken.split('.')[1];
+    console.log(`accessToken: ${this.accessToken}`);
     this.logs.push(`decoded accessToken: ${atob(splitAccessToken)}`);
     this.idToken = authResponse.idToken;
+    this.authToken = this.accessToken;
     this.logs.push(`idToken: ${this.idToken}`);
     const splitIdToken = this.idToken.split('.')[1];
     this.logs.push(`decoded idToken: ${atob(splitIdToken)}`);
@@ -170,12 +173,13 @@ export class HomePage {
   }
 
   testAWS = () => {
+    console.log(`idToken: ${this.idToken}`);
     AWS.config.region = 'eu-west-1';
     this.awsOutput.push(`cognito pool id: ${this.cognitoPoolId}`);
     const credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: this.cognitoPoolId,
       Logins: {
-        'sts.windows.net/6c448d90-4ca1-4caf-ab59-0a2aa67d7801': this.idToken
+        'sts.windows.net/6c448d90-4ca1-4caf-ab59-0a2aa67d7801': this.authToken
       }
     });
 
