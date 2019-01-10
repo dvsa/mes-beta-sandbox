@@ -5,9 +5,10 @@ import { NavControllerMock, NavParamsMock, ConfigMock, PlatformMock } from 'ioni
 import { AppModule } from '../../../app/app.module';
 import { AuthenticationProvider } from '../../../providers/authentication/authentication';
 import { AuthenticationProviderMock } from '../../../providers/authentication/__mocks__/authentication.mock';
-import {SecureStoreTestPage} from "../secure-store-test";
+import { SecureStoreTestPage } from '../secure-store-test';
+import { DataStoreProvider } from '../../../providers/data-store/data-store';
 
-describe('ContactDetailsPage', () => {
+describe('SecureStoreTestPage', () => {
   let fixture: ComponentFixture<SecureStoreTestPage>;
   let component: SecureStoreTestPage;
 
@@ -21,6 +22,7 @@ describe('ContactDetailsPage', () => {
         { provide: Config, useFactory: () => ConfigMock.instance() },
         { provide: Platform, useFactory: () => PlatformMock.instance() },
         { provide: AuthenticationProvider, useClass: AuthenticationProviderMock },
+        DataStoreProvider
       ]
     })
       .compileComponents()
