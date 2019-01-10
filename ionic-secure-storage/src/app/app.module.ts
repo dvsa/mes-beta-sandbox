@@ -15,6 +15,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthInterceptor } from '../providers/authentication/interceptor';
+import { DataStoreProvider } from '../providers/data-store/data-store';
+import {SecureStorage} from "@ionic-native/secure-storage";
 
 @NgModule({
   declarations: [App],
@@ -25,6 +27,7 @@ import { AuthInterceptor } from '../providers/authentication/interceptor';
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([]),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [App],
@@ -41,7 +44,9 @@ import { AuthInterceptor } from '../providers/authentication/interceptor';
     AppConfigProvider,
     AuthenticationProvider,
     InAppBrowser,
-    CognitoIdentityWrapper
+    CognitoIdentityWrapper,
+      SecureStorage,
+      DataStoreProvider
   ]
 })
 export class AppModule {
