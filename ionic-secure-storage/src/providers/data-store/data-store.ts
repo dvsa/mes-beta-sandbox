@@ -1,15 +1,15 @@
-import {Injectable} from '@angular/core';
-import {SecureStorageObject} from "@ionic-native/secure-storage";
+import { Injectable } from '@angular/core';
+import { SecureStorageObject } from '@ionic-native/secure-storage';
 
 @Injectable()
 export class DataStoreProvider {
 
   // todo - only temporary
-  defaultStoreName: string = "MES";
+  defaultStoreName: string = 'MES';
 
   secureContainer: SecureStorageObject = null;
 
-  constructor( ) {
+  constructor() {
   }
 
   setSecureContainer(container: SecureStorageObject): void {
@@ -23,21 +23,21 @@ export class DataStoreProvider {
   }
 
   getKeys(): any {
-    return this.secureContainer.keys().then((response: string[]) =>{
+    return this.secureContainer.keys().then((response: string[]) => {
       console.log('response from getKeys', response)
       return response
     })
   }
 
   getItem(key: string) {
-    return this.secureContainer.get(key).then((response) =>{
+    return this.secureContainer.get(key).then((response) => {
       console.log('response from get', response)
       return response;
     })
   }
 
   setItem(key: string, value: any) {
-    return this.secureContainer.set(key,value).then((response) =>{
+    return this.secureContainer.set(key, value).then((response) => {
       console.log('response from set item', response)
       return response;
     })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ComponentsModule } from '../../components/components.module';
-import {SecureStoreTestPage} from "./secure-store-test";
+import { SecureStoreTestPage } from './secure-store-test';
 
 @NgModule({
   declarations: [
@@ -12,4 +12,5 @@ import {SecureStoreTestPage} from "./secure-store-test";
     ComponentsModule,
   ],
 })
-export class SecureStoreTestPageModule {}
+export class SecureStoreTestPageModule {
+}

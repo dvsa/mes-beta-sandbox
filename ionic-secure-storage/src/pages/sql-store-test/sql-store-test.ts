@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
-import {BasePageComponent} from '../../classes/base-page';
-import {AuthenticationProvider} from '../../providers/authentication/authentication';
-import {Store} from "@ngrx/store";
-import {StoreModel} from "../../common/store.model";
-import {getJournalState} from "../journal/journal.reducer";
-import {Subscription} from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { BasePageComponent } from '../../classes/base-page';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { Store } from '@ngrx/store';
+import { StoreModel } from '../../common/store.model';
+import { getJournalState } from '../journal/journal.reducer';
+import { Subscription } from 'rxjs/Subscription';
 import { SqlDataStoreProvider } from '../../providers/sql-data-store/sql-data-store';
 
 @IonicPage()

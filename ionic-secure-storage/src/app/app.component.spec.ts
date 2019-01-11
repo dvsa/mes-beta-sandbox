@@ -11,11 +11,11 @@ import { MSAdalMock } from '../providers/authentication/__mocks__/ms-adal.mock';
 import { AuthenticationProviderMock } from '../providers/authentication/__mocks__/authentication.mock';
 import { AppConfigProvider } from '../providers/app-config/app-config';
 import { AppConfigProviderMock } from '../providers/app-config/__mocks__/app-config.mock';
-import {StatusBarMock, SplashScreenMock, PlatformMock} from 'ionic-mocks-jest';
-import {SecureStorage} from "@ionic-native/secure-storage";
-import {SecureStorageMock} from "@ionic-native-mocks/secure-storage";
-import {DataStoreProvider} from "../providers/data-store/data-store";
-import {DataStoreProviderMock} from "../providers/data-store/__mocks__/data-store.mock";
+import { StatusBarMock, SplashScreenMock, PlatformMock } from 'ionic-mocks-jest';
+import { SecureStorage } from '@ionic-native/secure-storage';
+import { SecureStorageMock } from '@ionic-native-mocks/secure-storage';
+import { DataStoreProvider } from '../providers/data-store/data-store';
+import { DataStoreProviderMock } from '../providers/data-store/__mocks__/data-store.mock';
 
 describe('App', () => {
   let fixture: ComponentFixture<App>;
@@ -48,7 +48,7 @@ describe('App', () => {
     expect(component).toBeDefined();
   });
   it('should set the Journal Page as the route page if not ios', () => {
-      expect(component.rootPage).toBe('JournalPage');
+    expect(component.rootPage).toBe('JournalPage');
   });
 
   describe('login()', () => {
@@ -56,7 +56,8 @@ describe('App', () => {
       component.login().then(() => {
         expect(component.rootPage).toBe('JournalPage');
       });
-    });;
+    });
+    ;
     it('should set root page to Login Page if login fails', () => {
       component.login().catch(() => {
         expect(component.rootPage).toBe('LoginPage');

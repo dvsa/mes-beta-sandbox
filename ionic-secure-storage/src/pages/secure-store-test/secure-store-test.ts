@@ -1,12 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
-import {BasePageComponent} from '../../classes/base-page';
-import {AuthenticationProvider} from '../../providers/authentication/authentication';
-import {DataStoreProvider} from "../../providers/data-store/data-store";
-import {Store} from "@ngrx/store";
-import {StoreModel} from "../../common/store.model";
-import {getJournalState} from "../journal/journal.reducer";
-import {Subscription} from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { BasePageComponent } from '../../classes/base-page';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { DataStoreProvider } from '../../providers/data-store/data-store';
+import { Store } from '@ngrx/store';
+import { StoreModel } from '../../common/store.model';
+import { getJournalState } from '../journal/journal.reducer';
+import { Subscription } from 'rxjs/Subscription';
 
 @IonicPage()
 @Component({
@@ -59,9 +59,9 @@ export class SecureStoreTestPage extends BasePageComponent implements OnInit, On
   getKeysInStore() {
     return this.dataStore.getKeys().then(
       (response) => {
-        if (response.length > 0){
+        if (response.length > 0) {
           this.currentKeys = response;
-        }else {
+        } else {
           this.currentKeys = 'No keys found'
         }
       },
@@ -78,7 +78,7 @@ export class SecureStoreTestPage extends BasePageComponent implements OnInit, On
       },
       (error) => {
         console.log('error getJournalState', error);
-        this.journalStateFromSecureStorage = "Journal state is empty"
+        this.journalStateFromSecureStorage = 'Journal state is empty'
       })
   }
 
@@ -105,12 +105,16 @@ export class SecureStoreTestPage extends BasePageComponent implements OnInit, On
         this.testResultStateFromSecureStorage = JSON.parse(response);
       },
       (error) => {
-        this.testResultStateFromSecureStorage = "Test Result state is empty"
+        this.testResultStateFromSecureStorage = 'Test Result state is empty'
       })
   }
 
   setTestResultState() {
-    this.dataStore.setItem(this.testResultKey, JSON.stringify({name: 'Mike Twong', result: 'pass', date: Date.now()})).then((response) => {
+    this.dataStore.setItem(this.testResultKey, JSON.stringify({
+      name: 'Mike Twong',
+      result: 'pass',
+      date: Date.now()
+    })).then((response) => {
         console.log('response from setTestResultState', response)
       },
       (error) => {

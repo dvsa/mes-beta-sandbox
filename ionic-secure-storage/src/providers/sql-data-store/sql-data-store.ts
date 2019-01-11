@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 export class SqlDataStoreProvider {
 
   // todo - only temporary
-  defaultDBName: string = "MES";
+  defaultDBName: string = 'MES';
 
   constructor( ) {
   }
