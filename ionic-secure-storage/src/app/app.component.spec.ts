@@ -11,9 +11,11 @@ import { MSAdalMock } from '../providers/authentication/__mocks__/ms-adal.mock';
 import { AuthenticationProviderMock } from '../providers/authentication/__mocks__/authentication.mock';
 import { AppConfigProvider } from '../providers/app-config/app-config';
 import { AppConfigProviderMock } from '../providers/app-config/__mocks__/app-config.mock';
-import { StatusBarMock, SplashScreenMock, PlatformMock } from 'ionic-mocks-jest';
+import {StatusBarMock, SplashScreenMock, PlatformMock} from 'ionic-mocks-jest';
 import {SecureStorage} from "@ionic-native/secure-storage";
+import {SecureStorageMock} from "@ionic-native-mocks/secure-storage";
 import {DataStoreProvider} from "../providers/data-store/data-store";
+import {DataStoreProviderMock} from "../providers/data-store/__mocks__/data-store.mock";
 
 describe('App', () => {
   let fixture: ComponentFixture<App>;
@@ -30,8 +32,8 @@ describe('App', () => {
         { provide: MSAdal, useClass: MSAdalMock },
         { provide: AuthenticationProvider, useClass: AuthenticationProviderMock },
         { provide: AppConfigProvider, useClass: AppConfigProviderMock },
-        SecureStorage,
-        DataStoreProvider
+        { provide: SecureStorage, useClass: SecureStorageMock },
+        { provide: DataStoreProvider, useClass: DataStoreProviderMock }
       ],
     }).compileComponents();
     // By default we set the app to be running on a non-ios device

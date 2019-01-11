@@ -28,7 +28,6 @@ export class App {
       statusBar.overlaysWebView(false);
       appConfig.refreshConfigSettings();
 
-      console.log('data store', this.dataStore);
       this.secureStorage.create('MES').then((storage: SecureStorageObject) => {
         console.log('secure storage initialised', storage)
         this.dataStore.setSecureContainer(storage);
