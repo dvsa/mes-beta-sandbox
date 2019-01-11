@@ -44,7 +44,7 @@ export class DataStoreProvider {
   }
 
   removeItem(key: string) {
-    return this.secureContainer.clear();
+    return this.secureContainer.remove(key);
   }
 
 }
