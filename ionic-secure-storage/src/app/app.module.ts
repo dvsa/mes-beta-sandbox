@@ -18,7 +18,7 @@ import { AuthInterceptor } from '../providers/authentication/interceptor';
 import { DataStoreProvider } from '../providers/data-store/data-store';
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { SQLite } from '@ionic-native/sqlite';
-import { DataStoreSqlProvider } from '../providers/data-store-sql/data-store-sql';
+import { SqlDataStoreProvider } from '../providers/sql-data-store/sql-data-store';
 
 @NgModule({
   declarations: [App],
@@ -50,7 +50,7 @@ import { DataStoreSqlProvider } from '../providers/data-store-sql/data-store-sql
     SecureStorage,
     DataStoreProvider,
     SQLite,
-    DataStoreSqlProvider
+    SqlDataStoreProvider
   ]
 })
 export class AppModule {

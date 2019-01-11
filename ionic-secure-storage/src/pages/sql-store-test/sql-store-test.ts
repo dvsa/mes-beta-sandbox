@@ -34,7 +34,7 @@ export class SqlStoreTestPage extends BasePageComponent implements OnInit, OnDes
     public platform: Platform,
     public authenticationProvider: AuthenticationProvider,
     private store$: Store<StoreModel>,
-    private sglData: SqlDataStoreProvider
+    private sqlData: SqlDataStoreProvider
   ) {
     super(platform, navCtrl, authenticationProvider)
   }
@@ -50,6 +50,11 @@ export class SqlStoreTestPage extends BasePageComponent implements OnInit, OnDes
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  initialiseDB() {
+    this.sqlData.getKeys();
+
   }
 
   updateSecureObject() {

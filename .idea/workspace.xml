@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93db8b2e-c581-4958-9f2e-cc9f31110b4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/__tests__/sql-store-test.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ionic-secure-storage/src/providers/sql-data-store/__mocks__/sql-data-store.mock.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ionic-secure-storage/src/providers/sql-data-store/sql-data-store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mes-beta-sandbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mes-beta-sandbox.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ionic-secure-storage/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ionic-secure-storage/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ionic-secure-storage/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ionic-secure-storage/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ionic-secure-storage/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ionic-secure-storage/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ionic-secure-storage/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ionic-secure-storage/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ionic-secure-storage/src/pages/journal/journal.html" beforeDir="false" afterPath="$PROJECT_DIR$/ionic-secure-storage/src/pages/journal/journal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="578">
-              <caret line="52" column="20" lean-forward="true" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+              <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
               <folding>
                 <element signature="e#0#94#0" expanded="true" />
               </folding>
@@ -51,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/providers/sql-data-store/sql-data-store.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -72,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/journal/journal.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="404">
-              <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+              <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -81,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/secure-store-test/secure-store-test.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="32" />
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="32" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -93,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.module.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -105,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-129">
-              <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -113,8 +98,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+            <state relative-caret-position="185">
+              <caret line="54" column="18" lean-forward="true" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -345,12 +330,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1547040480424</updated>
-      <workItem from="1547040481937" duration="28103000" />
+      <workItem from="1547040481937" duration="28373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28103000" />
+    <option name="totallyTimeSpent" value="28373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="13" y="33" width="1400" height="825" extended-state="0" />
@@ -565,14 +550,14 @@
     <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/journal/journal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
-          <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/secure-store-test/secure-store-test.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="32" />
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="32" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
@@ -582,7 +567,7 @@
     <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -595,7 +580,7 @@
     <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
-          <caret line="52" column="20" lean-forward="true" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
           <folding>
             <element signature="e#0#94#0" expanded="true" />
           </folding>
@@ -622,21 +607,21 @@
     <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/providers/sql-data-store/sql-data-store.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-129">
-          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ionic-secure-storage/src/pages/sql-store-test/sql-store-test.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+        <state relative-caret-position="185">
+          <caret line="54" column="18" lean-forward="true" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
