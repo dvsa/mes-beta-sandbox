@@ -16,7 +16,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthInterceptor } from '../providers/authentication/interceptor';
 import { DataStoreProvider } from '../providers/data-store/data-store';
-import {SecureStorage} from "@ionic-native/secure-storage";
+import { SecureStorage } from '@ionic-native/secure-storage';
+import { SQLite } from '@ionic-native/sqlite';
+import { DataStoreSqlProvider } from '../providers/data-store-sql/data-store-sql';
 
 @NgModule({
   declarations: [App],
@@ -45,8 +47,10 @@ import {SecureStorage} from "@ionic-native/secure-storage";
     AuthenticationProvider,
     InAppBrowser,
     CognitoIdentityWrapper,
-      SecureStorage,
-      DataStoreProvider
+    SecureStorage,
+    DataStoreProvider,
+    SQLite,
+    DataStoreSqlProvider
   ]
 })
 export class AppModule {

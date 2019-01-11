@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Sql Store Test
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">Logout</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Ionic Sql Store
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>Current Contents</ion-col>
+        <ion-col>{{currentContents | json}}</ion-col>
+      </ion-row>
+      <button ion-button (click)="updateSecureObject()">Get secure object</button>
+      <ion-row></ion-row>
+      <ion-row>
+        <ion-col>Current Keys</ion-col>
+        <ion-col>{{currentKeys}}</ion-col>
+      </ion-row>
+      <button ion-button (click)="getKeysInStore()">Get keys</button>
+      <ion-row>
+        <ion-col col-3>Item - JOURNAL</ion-col>
+        <ion-col>
+          <div style="height: 300px; overflow:scroll">{{journalStateFromSecureStorage | json}}</div>
+        </ion-col>
+      </ion-row>
+      <button ion-button (click)="getJournalState()">Get Journal State</button>
+      <button ion-button (click)="setJournalState()">Set Journal State</button>
+      <button ion-button (click)="clearJournalState()">Clear Journal State</button>
+      <ion-row>
+        <ion-col col-3>Item - TESTRESULT</ion-col>
+        <ion-col>
+          <div style="height: 300px; overflow:scroll">{{testResultStateFromSecureStorage | json}}</div>
+        </ion-col>
+      </ion-row>
+      <button ion-button (click)="getTestResultState()">Get TESTRESULT State</button>
+      <button ion-button (click)="setTestResultState()">Set TESTRESULT State</button>
+      <button ion-button (click)="clearTestResultState()">Clear TESTRESULT State</button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
