@@ -8,6 +8,7 @@ import { AuthenticationProviderMock } from '../../../providers/authentication/__
 
 import { SqlStoreTestPage } from '../sql-store-test';
 import { SqlDataStoreProvider } from '../../../providers/sql-data-store/sql-data-store';
+import { SqlDataStoreProviderMock } from '../../../providers/sql-data-store/__mocks__/sql-data-store.mock';
 
 describe('SqlStoreTestPage', () => {
   let fixture: ComponentFixture<SqlStoreTestPage>;
@@ -23,7 +24,7 @@ describe('SqlStoreTestPage', () => {
         { provide: Config, useFactory: () => ConfigMock.instance() },
         { provide: Platform, useFactory: () => PlatformMock.instance() },
         { provide: AuthenticationProvider, useClass: AuthenticationProviderMock },
-        SqlDataStoreProvider
+        { provide: SqlDataStoreProvider, useClass: SqlDataStoreProviderMock }
       ]
     })
       .compileComponents()
