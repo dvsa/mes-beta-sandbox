@@ -38,7 +38,7 @@ export class SqlDataStoreProvider {
     })
   }
 
-  public deleteState(key: string) {
+  public removeItem(key: string) {
     return new Promise((resolve, reject) => {
       this.storage.executeSql('DELETE FROM state WHERE key=?', [key])
         .then(data => {
@@ -58,7 +58,7 @@ export class SqlDataStoreProvider {
   // ON CONFLICT(user_name)
   // DO UPDATE SET age=excluded.age;
 
-  public saveState(key: string, value: any) {
+  public setItem(key: string, value: any) {
     return new Promise((resolve, reject) => {
       this.storage.executeSql('UPDATE state SET state = ? WHERE key = ?', [value, key])
         .then(data => {
@@ -82,13 +82,19 @@ export class SqlDataStoreProvider {
     });
   }
 
-  getStateKeys(): any {
+  getKeys(): any {
     return new Promise((resolve, reject) => {
       this.storage.executeSql('SELECT * FROM state', [])
         .then(data => {
+            console.log('get state keys resolved', data);
             const keys = [];
 
-            console.log('get state keys resolved', data);
+            // Cannot get this syntax to work
+            // let dataRows = Object.assign(data.rows);
+            // keys = dataRows.map((row, index) => {
+            //   return row.item(index).key
+            // });
+
             for (let i = 0; i < data.rows.length; i = i + 1) {
               console.log('data', data.rows.item(i).key);
               keys.push(data.rows.item(i).key)
@@ -103,7 +109,7 @@ export class SqlDataStoreProvider {
   }
 
 
-  getState(key: string) {
+  getItem(key: string) {
     return new Promise((resolve, reject) => {
       this.storage.executeSql('SELECT * FROM state WHERE key=?', [key])
         .then(data => {

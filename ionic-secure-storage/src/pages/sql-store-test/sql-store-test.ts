@@ -51,7 +51,7 @@ export class SqlStoreTestPage extends BasePageComponent implements OnInit, OnDes
   }
 
   getStates() {
-    this.sqlData.getStateKeys().then((response) => {
+    this.sqlData.getKeys().then((response) => {
         console.log('get keys sql resolved in page', response);
         this.currentStates = response;
       },
@@ -63,7 +63,7 @@ export class SqlStoreTestPage extends BasePageComponent implements OnInit, OnDes
   }
 
   getJournalState() {
-    this.sqlData.getState(this.journalKey).then((response) => {
+    this.sqlData.getItem(this.journalKey).then((response) => {
         console.log('get journal state', response);
         this.journalStateDB = response;
       },
@@ -73,7 +73,7 @@ export class SqlStoreTestPage extends BasePageComponent implements OnInit, OnDes
   }
 
   setJournalState() {
-    this.sqlData.saveState(this.journalKey, JSON.stringify(this.journalStateFromStore)).then((response) => {
+    this.sqlData.setItem(this.journalKey, JSON.stringify(this.journalStateFromStore)).then((response) => {
         console.log('set journal state', response);
       },
       error => {
@@ -82,7 +82,7 @@ export class SqlStoreTestPage extends BasePageComponent implements OnInit, OnDes
   }
 
   clearJournalState() {
-    this.sqlData.deleteState(this.journalKey).then((response) => {
+    this.sqlData.removeItem(this.journalKey).then((response) => {
         console.log('delete journal state', response);
       },
       error => {
@@ -91,7 +91,7 @@ export class SqlStoreTestPage extends BasePageComponent implements OnInit, OnDes
   }
 
   getTestResultState() {
-    this.sqlData.getState(this.testResultKey).then((response) => {
+    this.sqlData.getItem(this.testResultKey).then((response) => {
         console.log('get test result state', response);
         this.testResultStateDB = response;
       },
@@ -101,7 +101,7 @@ export class SqlStoreTestPage extends BasePageComponent implements OnInit, OnDes
   }
 
   setTestResultState() {
-    this.sqlData.saveState(this.testResultKey, JSON.stringify({
+    this.sqlData.setItem(this.testResultKey, JSON.stringify({
       name: 'Mike Twong',
       result: 'pass',
       date: Date.now()
@@ -114,7 +114,7 @@ export class SqlStoreTestPage extends BasePageComponent implements OnInit, OnDes
   }
 
   clearTestResultState() {
-    this.sqlData.deleteState(this.testResultKey).then((response) => {
+    this.sqlData.removeItem(this.testResultKey).then((response) => {
         console.log('delete test result state', response);
       },
       error => {
