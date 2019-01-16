@@ -66,6 +66,7 @@
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-sqlcipher-adapter": "0.3.0",
     "cordova-sqlite-storage": "2.6.0",
     "event-stream": "3.3.4",
     "ionic-angular": "3.9.2",
@@ -124,7 +125,8 @@
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-secure-storage": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova-sqlcipher-adapter": {}
     },
     "platforms": [
       "ios"
