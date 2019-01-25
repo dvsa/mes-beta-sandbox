@@ -1,0 +1,7 @@
+{
+  "name": "usability-ux-cam",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
