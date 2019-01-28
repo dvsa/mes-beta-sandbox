@@ -8,5 +8,41 @@
 
 
 <ion-content padding>
-  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button primary (click)="startRecording()">Start Recording</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Input:</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Text Area:</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button primary (click)="buttonPress(1)">Button 1</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button secondary (click)="buttonPress(2)">Button 2</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button outline (click)="buttonPress(3)">Button 3</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button round (click)="buttonPress(4)">Button 4</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
