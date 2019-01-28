@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Camera Preview Demo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col>
+        <div class="camera-preview-container" #cameraPreviewContainer></div>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col>
+        <button ion-button (click)="showCamera()">Show Camera</button>
+      </ion-col>
+      <ion-col>
+          <button ion-button (click)="hideCamera()">Hide Camera</button>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
