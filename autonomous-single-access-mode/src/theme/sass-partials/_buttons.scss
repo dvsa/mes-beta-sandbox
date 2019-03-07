@@ -1,0 +1,56 @@
+.mes-primary-button {
+  background: map-get($colors-gds, gds-dark-green);
+  box-shadow: inset 0 -2px 0 0 map-get($colors-gds, gds-green);
+  border-radius: 10px;
+  margin: 0 0.2rem;
+  height: initial;
+  h3 {
+    color: map-get($colors, mes-white);
+    .text-zoom-regular &, 
+    .text-zoom-large &, 
+    .text-zoom-x-large & {
+      line-height: 2em;
+    }
+    min-height: 44px;
+    padding-top: 1px
+  }
+}
+
+.mes-secondary-button {
+  background: map-get($colors, secondary-button);
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 0 0.2em;
+  h3 {
+    color: map-get($colors, mes-white);
+  }
+}
+
+.mes-transparent-button {
+  background: map-get($colors, mes-white);
+  color: map-get($colors-gds, gds-black);
+  border-radius: 4px;
+  padding: 0 0.8rem;
+  margin: 0 0.2rem;
+  line-height: 2.6rem;
+  &.activated {
+    background: map-get($colors-gds, gds-grey-4);
+    h3,
+    ion-icon {
+      color: map-get($colors-gds, gds-light-blue);
+    }
+  }
+}
+
+.bar-button-ios {
+  height: 44px;
+  padding: 10px 8px;
+  .text-zoom-large & {
+    font-size: 20px;
+    padding: 16px 8px;
+  }
+  .text-zoom-x-large & {
+    font-size: 22px;
+    padding: 22px 8px;
+  }
+}
