@@ -1,0 +1,7 @@
+{
+  "name": "pdfPoC",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
