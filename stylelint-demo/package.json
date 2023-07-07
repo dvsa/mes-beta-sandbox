@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.2.1",
-    "stylelint": "^9.9.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-standard": "^18.2.0",
     "typescript": "~2.6.2"
   },
